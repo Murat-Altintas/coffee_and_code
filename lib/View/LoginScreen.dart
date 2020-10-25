@@ -52,16 +52,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
   int checkIndex = 0;
-  double _top = 160;
-
-  TextStyle blueStyle = mainTheme.textTheme.headline2.copyWith(color: Colors.orange);
-
+  double _top;
+  List<double> pointsPostions;
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    setState(() {});
+//    pointsPostions = [160, 410, 650];
+   // _top =100;
   }
 
   TextStyle yellowStyle = mainTheme.textTheme.headline2;
@@ -70,85 +69,114 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            Row(
+        child: SizedBox.expand(
+          child: LayoutBuilder(
+            builder: (context, constrants){
+              double height = constrants.maxHeight ;
+              print(height);
+              pointsPostions = [ height/4-80+75,height/3-20+75,height/2+50+75];
+              _top ??= pointsPostions[0];
+               return Stack(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(width: context.width * 100, height: context.height * 98, child: LeftMenu(indexChecked, checkIndex)),
+                RotatedBox(
+                  quarterTurns: 3,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.menu),
+                    color: mainTheme.primaryColorLight,
+                  ),
                 ),
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    width: context.width * 100,
-                    height: context.height * 98,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        FlatButton(
-                          onPressed: () {
-                            final _checkIndex = checkIndex + 1 > 2 ? 0 : checkIndex + 1;
-                            indexChecked(_checkIndex);
-                          },
-                          child: Text("Increase!"),
-                        ),
-                      ],
+                Positioned(
+                  top: height/4-80,
+                 child: _menuTextWidget(indexChecked: indexChecked, checkIndex: checkIndex,i:0 ,),),
+                Positioned(
+                  top: height/3-20,
+                  child: _menuTextWidget(indexChecked: indexChecked, checkIndex: checkIndex,i:1,),),
+                Positioned(
+                  top: height/2+50,
+                  child: _menuTextWidget(indexChecked: indexChecked, checkIndex: checkIndex,i:2 ,),),
+                /*
+                 Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(width: context.width * 100, height: context.height * 98, child: LeftMenu(indexChecked, checkIndex)),
                     ),
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        width: context.width * 100,
+                        height: context.height * 98,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FlatButton(
+                              onPressed: () {
+                                final _checkIndex = checkIndex + 1 > 2 ? 0 : checkIndex + 1;
+                                indexChecked(_checkIndex);
+                              },
+                              child: Text("Increase!"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                 */
+                AnimatedPositioned(
+                  duration: Duration(seconds: 1),
+                  curve: Curves.elasticInOut,
+                  onEnd: () {
+                    print("finish");
+                  },
+                  top: _top-10,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 52),
+                    child: RotatedBox(
+                        quarterTurns: 5,
+                        child: Container(
+                          width: 10,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: mainTheme.primaryColor,
+                          ),
+                        )),
+
+                    /*
+                      Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.elliptical(60, 60)),
+                        color: mainTheme.primaryColorLight,
+                      ),
+                    )
+                       */
                   ),
                 ),
               ],
-            ),
-            AnimatedPositioned(
-              duration: Duration(seconds: 1),
-              curve: Curves.elasticInOut,
-              onEnd: () {
-                print("finish");
-              },
-              top: _top,
-              child: Padding(
-                padding: EdgeInsets.only(left: 52),
-                child: RotatedBox(
-                    quarterTurns: 5,
-                    child: Container(
-                      width: 10,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: mainTheme.primaryColor,
-                      ),
-                    )),
-
-                /*
-                  Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.elliptical(60, 60)),
-                    color: mainTheme.primaryColorLight,
-                  ),
-                )
-                   */
-              ),
-            ),
-          ],
+            );},
+          ),
         ),
       ),
     );
   }
 
-  final pointsPostions = <double>[160, 410, 650];
+
 
   void indexChecked(int i) {
     setState(() {
       checkIndex = i;
-      _top = pointsPostions[i];
+      _top = pointsPostions[i]+0;
+      print(_top);
     });
   }
 }
 
-class LeftMenu extends StatelessWidget {
-  LeftMenu(this.indexChecked, this.checkIndex);
+class _LeftMenu extends StatelessWidget {
+  _LeftMenu(this.indexChecked, this.checkIndex);
 
   final void Function(int) indexChecked;
   final int checkIndex;
@@ -160,31 +188,36 @@ class LeftMenu extends StatelessWidget {
         Spacer(),
         Expanded(
           flex: 1,
-          child: RotatedBox(
-            quarterTurns: 3,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.menu),
-              color: mainTheme.primaryColorLight,
-            ),
-          ),
+
         ),
-        ..._menuList.map((e) => _menuText(context, _menuList.indexOf(e))).toList(),
+       // ..._menuList.map((e) => _menuText(context, _menuList.indexOf(e))).toList(),
         Spacer(),
       ],
     );
   }
 
-  Widget _menuText(BuildContext context, int i) {
-    return Expanded(
-      flex: 7,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          RotatedBox(
+
+}
+
+class _menuTextWidget extends StatelessWidget {
+  const _menuTextWidget({
+    Key key,
+    @required this.indexChecked,
+    @required this.checkIndex,
+    this.i,
+  }) : super(key: key);
+
+  final void Function(int p1) indexChecked;
+  final int checkIndex;
+  final int i;
+  @override
+  Widget build(BuildContext context) {
+   // RenderBox object = context.findRenderObject();
+    //Offset globalPostion = object.localToGlobal(Offset.zero);
+    return  RotatedBox(
             quarterTurns: 3,
-            child: TextButton(
+            child: FlatButton(
+minWidth: 150,
               onPressed: () {
                 indexChecked(i);
               },
@@ -193,10 +226,8 @@ class LeftMenu extends StatelessWidget {
                       ? mainTheme.textTheme.headline2.copyWith(color: mainTheme.primaryColor, fontSize: context.normalText)
                       : mainTheme.textTheme.headline2.copyWith(color: mainTheme.primaryColorLight, fontSize: context.normalText)),
             ),
-          ),
-        ],
-      ),
-    );
+          );
+
   }
 }
 
