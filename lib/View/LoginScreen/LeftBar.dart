@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'RightSide.dart';
+import 'RightPages.dart';
 
 List<String> _menuList = ["Sign In", "Sign Up", "Restore Password"];
 

@@ -1,5 +1,5 @@
 import 'package:coffee_and_code/Theme/MainTheme.dart';
-import 'package:coffee_and_code/View/LoginScreen.dart';
+import 'file:///C:/Users/murat/Desktop/coffee_and_code/lib/View/LoginScreen/LeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 
