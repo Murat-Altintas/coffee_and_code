@@ -1,14 +1,15 @@
-import 'package:coffee_and_code/View/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'LoginScreen.dart';
 
 class RightSide extends StatefulWidget {
+  RightSide(this.myController);
+final PageController myController;
+
   @override
   _RightSideState createState() => _RightSideState();
 }
 
 class _RightSideState extends State<RightSide> {
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -16,7 +17,8 @@ class _RightSideState extends State<RightSide> {
       child: Container(
         color: Colors.green,
         child: PageView(
-          //controller: LoginScreen().myController,
+          physics: NeverScrollableScrollPhysics(),
+          controller: widget.myController,
           scrollDirection: Axis.horizontal,
           children: [
             Container(

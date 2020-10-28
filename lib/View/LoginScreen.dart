@@ -4,14 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:math';
-
 import 'RightSide.dart';
 
 List<String> _menuList = ["Sign In", "Sign Up", "Restore Password"];
 
 class LoginScreen extends StatefulWidget {
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -26,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Row(
+        child: Row( //read whatsapp pls
           children: [
             Expanded(
               flex: 1,
@@ -111,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            RightSide(),
+            RightSide(myController),
           ],
         ),
       ),
