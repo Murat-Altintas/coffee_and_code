@@ -6,23 +6,35 @@ extension ContextExtension on BuildContext {
 
 extension MediaQueryExtension on BuildContext {
   double get height => mediaQuery.size.height / 100;
+
   double get width => mediaQuery.size.width / 100;
 
   double get lowestText => height * 1.7;
-  double get lowText => height * 2;
+
+  double get smallText => height * 2;
+
   double get normalText => height * 2.5;
+
   double get heightText => height * 3;
 
   double get paddingLowValue => width * 1;
+
   double get paddingMediumValue => width * 5;
 
+  double get centerTextPadding => height * 1;
+
   double get iconSmall => height * 4;
+
   double get iconMedium => height * 5;
 
   double get fieldSpaceContainer => height * 1;
+
   double get lowestContainer => height * 3;
+
   double get lowContainer => height * 5;
+
   double get mediumContainer => height * 7;
+
   double get heighContainer => height * 9;
 }
 
@@ -35,9 +47,9 @@ extension ThemeExtension on BuildContext {
 }
 
 extension PaddingExtension on BuildContext {
-  EdgeInsets get paddingMedium =>
-      EdgeInsets.symmetric(horizontal: paddingMediumValue);
+  EdgeInsets get paddingMedium => EdgeInsets.symmetric(horizontal: paddingMediumValue);
 
-  EdgeInsets get paddingLow =>
-      EdgeInsets.symmetric(horizontal: paddingLowValue);
+  EdgeInsets get paddingLow => EdgeInsets.symmetric(horizontal: paddingLowValue);
+
+  EdgeInsets get textPadding => EdgeInsets.fromLTRB(0, 0, 0, centerTextPadding);
 }

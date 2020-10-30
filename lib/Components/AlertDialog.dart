@@ -1,4 +1,3 @@
-import 'package:coffee_and_code/Theme/MainTheme.dart';
 import 'file:///C:/Users/murat/Desktop/coffee_and_code/lib/View/LoginScreen/LeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
@@ -10,6 +9,8 @@ class Components extends StatelessWidget {
   }
 
   Future<void> alertDialog(BuildContext context, headline) {
+    final mainTheme = Theme.of(context);
+
     return showDialog(
         context: context,
         barrierDismissible: false,
@@ -24,7 +25,7 @@ class Components extends StatelessWidget {
                   style: mainTheme.textTheme.headline1.copyWith(fontSize: context.normalText),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => null));
                 },
               ),
             ],

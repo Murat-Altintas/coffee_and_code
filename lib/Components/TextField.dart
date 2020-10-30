@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:coffee_and_code/Theme/MainTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,17 @@ class TextFields extends StatefulWidget {
   final keyboardType;
   final focusNode;
 
-  const TextFields({Key key, this.controller, this.validator, this.hintText, this.textStyle, this.suffixIcon, this.obscureText, this.error, this.keyboardType, this.focusNode})
+  const TextFields(
+      {Key key,
+      this.controller,
+      this.validator,
+      this.hintText,
+      this.textStyle,
+      this.suffixIcon,
+      this.obscureText,
+      this.error,
+      this.keyboardType,
+      this.focusNode})
       : super(key: key);
 
   @override
@@ -25,8 +34,9 @@ class TextFields extends StatefulWidget {
 
 class _TextFieldsState extends State<TextFields> {
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) {    final mainTheme = Theme.of(context);
+
+  return Container(
       height: context.heighContainer,
       child: TextFormField(
         focusNode: widget.focusNode,
@@ -36,20 +46,45 @@ class _TextFieldsState extends State<TextFields> {
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(top: 15, left: 20),
-          errorStyle: TextStyle(
-            fontSize: context.lowText,
-          ),
+          contentPadding: EdgeInsets.only(top: context.smallText, left: context.heightText),
+          errorStyle: mainTheme.textTheme.headline3.copyWith(fontSize: context.smallText, color: Colors.red),
           suffixIcon: widget.suffixIcon,
           errorText: widget.error,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(context.lowContainer)),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+              width: 1,
+              style: BorderStyle.solid,
+            ),
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(context.lowContainer)),
-            borderSide: BorderSide(color: mainTheme.primaryColor, width: 2),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+              width: 1,
+              style: BorderStyle.solid,
+            ),
           ),
-          errorBorder: mainTheme.inputDecorationTheme.errorBorder,
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+          ),
+          disabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blue,
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+          ),
           hintStyle: widget.textStyle,
           hintText: widget.hintText,
         ),
