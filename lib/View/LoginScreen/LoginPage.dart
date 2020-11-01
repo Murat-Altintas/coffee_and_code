@@ -1,7 +1,11 @@
 import 'package:coffee_and_code/Components/Buttons.dart';
+import 'package:coffee_and_code/Components/SocialMediaButtons.dart';
 import 'package:coffee_and_code/Components/TextField.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _TextController = TextEditingController();
   TextEditingController _PasswordController = TextEditingController();
 
+  var obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -22,54 +27,115 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         children: [
           Spacer(
-            flex: 7,
+            flex: 2,
           ),
           Expanded(
-            flex: 15,
-            child: RichText(
-              text: TextSpan(
-                text: "Welcome back\n",
-                style: mainTheme.textTheme.headline2,
-                children: <TextSpan>[
-                  TextSpan(
-                    text: '\nA wide range of specialty coffees, tea and beverages.',
-                    style: mainTheme.textTheme.headline3.copyWith(fontSize: context.normalText),
-                  ),
-                ],
-              ),
+            flex: 13,
+            child: Lottie.asset(
+              "assets/lottie/lf30_editor_z5agerb1.json",
+              reverse: true,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Welcome back;",
+              style: mainTheme.textTheme.headline2,
             ),
           ),
           Expanded(
-            flex: 7,
-            child: TextFields(
-              controller: _TextController,
-              keyboardType: TextInputType.emailAddress,
-              error: "test",
-              hintText: "test@test.com",
-              textStyle: mainTheme.textTheme.headline1,
-              obscureText: false,
+            flex: 10,
+            child: Column(
+              children: [
+                TextFields(
+                  controller: _TextController,
+                  keyboardType: TextInputType.emailAddress,
+                  hintText: "test@test.com",
+                  textStyle: mainTheme.textTheme.headline1,
+                  obscureText: false,
+                ),
+                TextFields(
+                  controller: _PasswordController,
+                  keyboardType: TextInputType.number,
+                  hintText: "123456",
+                  textStyle: mainTheme.textTheme.headline1,
+                  obscureText: obscureText,
+                  suffixIcon: IconButton(
+                      splashColor: mainTheme.primaryColorLight,
+                      highlightColor: mainTheme.primaryColorLight,
+                      splashRadius: context.width * 5,
+                      icon: obscureText == true ? Icon(Icons.visibility_rounded, color: mainTheme.primaryColor) : Icon(Icons.visibility_off),
+                      onPressed: _showPassword),
+                ),
+              ],
             ),
-          ),
-          Expanded(
-            flex: 30,
-            child: TextFields(
-              controller: _PasswordController,
-              keyboardType: TextInputType.number,
-              error: "test",
-              hintText: "123456",
-              textStyle: mainTheme.textTheme.headline1,
-              obscureText: true,
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Button(buttonColor: mainTheme.buttonColor, buttonShadowColor: mainTheme.buttonColor, buttonText: "Text",),
           ),
           Spacer(
-            flex: 5,
+            flex: 4,
+          ),
+          Button(
+            onTap: () {
+              obscureText = !obscureText;
+            },
+            buttonColor: mainTheme.primaryColorLight,
+            buttonShadowColor: mainTheme.primaryColorLight,
+            buttonText: "Sign In",
+            buttonStyle: mainTheme.textTheme.headline6,
+          ),
+          Spacer(
+
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Divider(
+                  color: mainTheme.primaryColorLight,
+                  thickness: 1,
+                ),
+              ),
+              Text("  or sign in with  "),
+              Expanded(
+                child: Divider(
+                  color: mainTheme.primaryColorLight,
+                  thickness: 1,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SocialMediaButtons(
+                buttonColor: Colors.indigo,
+                buttonShadowColor: Colors.indigo,
+                socialChild: SvgPicture.asset("assets/images/facebook-app-symbol.svg"),
+                onTap: () {},
+              ),
+              SocialMediaButtons(
+                buttonColor: Color.fromRGBO(0, 119, 183, 1),
+                buttonShadowColor: Color.fromRGBO(0, 119, 183, 1),
+                socialChild: SvgPicture.asset("assets/images/linkedin.svg"),
+                onTap: () {},
+              ),
+              SocialMediaButtons(
+                buttonColor: Color.fromRGBO(29, 161, 242, 1),
+                buttonShadowColor: Color.fromRGBO(29, 161, 242, 1),
+                socialChild: SvgPicture.asset("assets/images/twitter.svg"),
+                onTap: () {},
+              ),
+            ],
+          ),
+          Spacer(
+            flex: 6,
           ),
         ],
       ),
     );
+  }
+
+  void _showPassword() {
+    setState(() {
+      obscureText = !obscureText;
+    });
   }
 }

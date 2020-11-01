@@ -40,12 +40,12 @@ class _LeftBarState extends State<LeftBar> {
                 child: LayoutBuilder(
                   builder: (context, constrants) {
                     double height = constrants.maxHeight;
-                    pointsPositions = [height / 4.5, height / 2, height / 1.17];
+                    pointsPositions = [height / 5.4, height / 2.1, height / 1.17];
                     _top ??= pointsPositions[0];
                     return Stack(
                       children: [
                         Positioned(
-                          top: height / 14,
+                          top: height / 25,
                           child: _menuTextWidget(
                             controller: (i) {
                               myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
@@ -56,7 +56,7 @@ class _LeftBarState extends State<LeftBar> {
                           ),
                         ),
                         Positioned(
-                          top: height / 2.9,
+                          top: height / 3,
                           child: _menuTextWidget(
                             controller: (i) {
                               myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
@@ -139,16 +139,13 @@ class _menuTextWidget extends StatelessWidget {
       quarterTurns: 3,
       child: FlatButton(
         splashColor: mainTheme.primaryColor,
-        highlightColor: mainTheme.primaryColorDark,
+        highlightColor: mainTheme.primaryColor,
         minWidth: context.width * 32,
         onPressed: () {
           indexChecked(i);
           controller(i);
         },
-        child: Text(_menuList[i],
-            style: checkIndex == i
-                ? mainTheme.textTheme.headline2
-                : mainTheme.textTheme.headline6),
+        child: Text(_menuList[i], style: checkIndex == i ? mainTheme.textTheme.headline2 : mainTheme.textTheme.headline6),
       ),
     );
   }

@@ -313,7 +313,7 @@ class MyApp extends StatelessWidget {
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.blue,
+            color: Color.fromRGBO(230, 132, 97, 1),
             width: 1,
             style: BorderStyle.solid,
           ),
@@ -327,14 +327,14 @@ class MyApp extends StatelessWidget {
         ),
         disabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.blue,
+            color: Colors.grey,
             width: 1,
             style: BorderStyle.solid,
           ),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.blue,
+            color: Color.fromRGBO(140, 198, 210, 1),
             width: 1,
             style: BorderStyle.solid,
           ),

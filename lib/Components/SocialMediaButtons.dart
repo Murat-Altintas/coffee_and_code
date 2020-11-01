@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:flutter/widgets.dart';
 
-class Button extends StatefulWidget {
+class SocialMediaButtons extends StatefulWidget {
   final buttonColor;
   final buttonShadowColor;
-  final buttonText;
   final onTap;
   final buttonStyle;
+  final socialChild;
 
-  const Button({Key key, @required this.buttonColor, @required this.buttonShadowColor, @required this.buttonText, @required this.onTap, this.buttonStyle})
+  const SocialMediaButtons(
+      {Key key, @required this.buttonColor, @required this.buttonShadowColor, @required this.onTap, this.buttonStyle, this.socialChild})
       : super(key: key);
 
   @override
-  _ButtonState createState() => _ButtonState();
+  _SocialMediaButtonsState createState() => _SocialMediaButtonsState();
 }
 
-class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
+class _SocialMediaButtonsState extends State<SocialMediaButtons> with SingleTickerProviderStateMixin {
   double _scale;
   AnimationController _controller;
 
@@ -42,7 +43,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
-    _scale = 1.2 - _controller.value;
+    _scale = .8 - _controller.value;
 
     return GestureDetector(
       onTapDown: _tapDown,
@@ -51,14 +52,10 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
       child: Transform.scale(
         scale: _scale,
         child: Container(
-          child: Center(
-            child: Text(
-              widget.buttonText,
-              style: widget.buttonStyle,
-            ),
-          ),
-          height: context.height * 5,
-          width: context.width * 80,
+          width: context.width * 20,
+          height: context.height * 10,
+          padding: context.paddingSocialIcons,
+          child: widget.socialChild,
           decoration: BoxDecoration(
             color: widget.buttonColor,
             borderRadius: BorderRadius.circular(40),

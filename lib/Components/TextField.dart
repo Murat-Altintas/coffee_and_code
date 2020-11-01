@@ -46,45 +46,25 @@ class _TextFieldsState extends State<TextFields> {
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(top: context.smallText, left: context.heightText),
           errorStyle: mainTheme.textTheme.headline3.copyWith(fontSize: context.smallText, color: Colors.red),
           suffixIcon: widget.suffixIcon,
           errorText: widget.error,
           border: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.blue,
+              color: Colors.green,
               width: 1,
               style: BorderStyle.solid,
             ),
           ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.blue,
-              width: 1,
-              style: BorderStyle.solid,
-            ),
-          ),
+          enabledBorder: mainTheme.inputDecorationTheme.enabledBorder,
           errorBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.blue,
+              color: Colors.red,
               width: 1,
               style: BorderStyle.solid,
             ),
           ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.blue,
-              width: 1,
-              style: BorderStyle.solid,
-            ),
-          ),
-          disabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.blue,
-              width: 1,
-              style: BorderStyle.solid,
-            ),
-          ),
+          focusedBorder: mainTheme.inputDecorationTheme.focusedBorder,
           hintStyle: widget.textStyle,
           hintText: widget.hintText,
         ),

@@ -21,7 +21,7 @@ extension MediaQueryExtension on BuildContext {
 
   double get paddingMediumValue => width * 5;
 
-  double get centerTextPadding => height * 1;
+  double get paddingSocialIconsValue => width * 4;
 
   double get iconSmall => height * 4;
 
@@ -47,9 +47,9 @@ extension ThemeExtension on BuildContext {
 }
 
 extension PaddingExtension on BuildContext {
+  EdgeInsets get paddingSocialIcons => EdgeInsets.all(paddingSocialIconsValue);
+
   EdgeInsets get paddingMedium => EdgeInsets.symmetric(horizontal: paddingMediumValue);
 
   EdgeInsets get paddingLow => EdgeInsets.symmetric(horizontal: paddingLowValue);
-
-  EdgeInsets get textPadding => EdgeInsets.fromLTRB(0, 0, 0, centerTextPadding);
 }
