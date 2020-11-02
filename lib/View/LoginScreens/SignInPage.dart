@@ -1,3 +1,4 @@
+import 'package:coffee_and_code/Components/AlertDialog.dart';
 import 'package:coffee_and_code/Components/Buttons.dart';
 import 'package:coffee_and_code/Components/SocialMediaButtons.dart';
 import 'package:coffee_and_code/Components/TextField.dart';
@@ -7,12 +8,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignInPageState extends State<SignInPage> {
   TextEditingController _TextController = TextEditingController();
   TextEditingController _PasswordController = TextEditingController();
 
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           Expanded(
             flex: 13,
             child: Lottie.asset(
-              "assets/lottie/lf30_editor_z5agerb1.json",
+              "assets/lottie/login_lottie.json",
               reverse: true,
             ),
           ),
@@ -71,20 +72,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Spacer(
-            flex: 4,
+            flex: 6,
           ),
           Button(
             onTap: () {
-              obscureText = !obscureText;
+              AlertDialogClass().alertDialog(context, "Complete");
             },
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Sign In",
             buttonStyle: mainTheme.textTheme.headline6,
           ),
-          Spacer(
-
-          ),
+          Spacer(),
           Row(
             children: [
               Expanded(

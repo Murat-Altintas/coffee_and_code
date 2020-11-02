@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:coffee_and_code/View/LoginScreen/LeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'View/LoginScreens/FirstLeftBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Builder(builder: (context) {
         ThemeData mainTheme = _buildMainTheme(context);
-        return Theme(data: mainTheme, child: LeftBar());
+        return Theme(data: mainTheme, child: FirstLeftBar());
       }),
     );
   }

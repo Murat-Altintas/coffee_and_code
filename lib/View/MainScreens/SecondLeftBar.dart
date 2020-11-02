@@ -1,20 +1,19 @@
 import 'package:coffee_and_code/Components/ContextExtension.dart';
-import 'package:coffee_and_code/View/LoginScreen/LoginPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
-import 'RightPages.dart';
+import 'MainPage.dart';
+import 'package:coffee_and_code/main.dart';
 
 List<String> _menuList = ["Sign In", "Sign Up", "Restore Password"];
 
-class LeftBar extends StatefulWidget {
+class SecondLeftBar extends StatefulWidget {
   @override
-  _LeftBarState createState() => _LeftBarState();
+  _SecondLeftBarState createState() => _SecondLeftBarState();
 }
 
-class _LeftBarState extends State<LeftBar> {
+class _SecondLeftBarState extends State<SecondLeftBar> {
   PageController myController = PageController();
   int checkIndex = 0;
   double _top;
@@ -101,7 +100,16 @@ class _LeftBarState extends State<LeftBar> {
             ),
             Expanded(
               flex: 5,
-              child: RightSide(myController),
+              child: PageView(
+                physics: NeverScrollableScrollPhysics(),
+                controller: myController,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  MainPage(),
+                  MainPage(),
+                  MainPage(),
+                ],
+              ),
             ),
           ],
         ),
