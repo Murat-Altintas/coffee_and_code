@@ -21,6 +21,8 @@ extension MediaQueryExtension on BuildContext {
 
   double get paddingMediumValue => width * 5;
 
+  double get paddingHeightValue => width * 12;
+
   double get paddingSocialIconsValue => width * 4;
 
   double get iconSmall => height * 4;
@@ -50,6 +52,8 @@ extension PaddingExtension on BuildContext {
   EdgeInsets get paddingSocialIcons => EdgeInsets.all(paddingSocialIconsValue);
 
   EdgeInsets get paddingMedium => EdgeInsets.symmetric(horizontal: paddingMediumValue);
+
+  EdgeInsets get paddingText => EdgeInsets.only(left: paddingHeightValue);
 
   EdgeInsets get paddingLow => EdgeInsets.symmetric(horizontal: paddingLowValue);
 }

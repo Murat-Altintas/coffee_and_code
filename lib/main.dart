@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'View/LoginScreens/FirstLeftBar.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Builder(builder: (context) {
         ThemeData mainTheme = _buildMainTheme(context);
-        return Theme(data: mainTheme, child: FirstLeftBar());
+        return Theme(data: mainTheme, child: SecondLeftBar());
       }),
     );
   }
@@ -121,7 +122,7 @@ class MyApp extends StatelessWidget {
         headline4: TextStyle(
           color: Color.fromRGBO(230, 132, 97, 1),
           fontFamily: "Lora",
-          fontSize: context.heightText,
+          fontSize: context.height * 5,
         ),
         headline5: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
@@ -134,22 +135,19 @@ class MyApp extends StatelessWidget {
           fontSize: context.normalText,
         ),
         subtitle1: TextStyle(
-          color: Color(0xdd000000),
-          fontSize: 15,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
+          color: Color.fromRGBO(84, 54, 62, 1),
+          fontFamily: "Lora",
+          fontSize: context.normalText,
         ),
         bodyText1: TextStyle(
-          color: Color(0xdd000000),
-          fontSize: null,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
+          color: Colors.white,
+          fontFamily: "Lora",
+          fontSize: context.heightText,
         ),
         bodyText2: TextStyle(
-          color: Color(0xdd000000),
-          fontSize: null,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
+          color: Colors.white,
+          fontFamily: "Roboto",
+          fontSize: context.smallText,
         ),
         caption: TextStyle(
           color: Color(0x8a000000),

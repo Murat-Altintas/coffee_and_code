@@ -88,12 +88,13 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           Button(
             onTap: () {
-              obscureText = !obscureText;
             },
+            height: context.height * 5,
+            width: context.width * 80,
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Sign Up",
-            buttonStyle: mainTheme.textTheme.headline6,
+            buttonTextStyle: mainTheme.textTheme.headline6,
           ),
           Spacer(),
           Row(

@@ -26,7 +26,8 @@ class AlertDialogClass extends StatelessWidget {
                   style: mainTheme.textTheme.headline1.copyWith(fontSize: context.normalText),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondLeftBar()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => SecondLeftBar()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme(data: mainTheme, child: SecondLeftBar())));
                 },
               ),
             ],

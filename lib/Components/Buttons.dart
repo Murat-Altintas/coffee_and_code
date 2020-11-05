@@ -7,9 +7,19 @@ class Button extends StatefulWidget {
   final buttonShadowColor;
   final buttonText;
   final onTap;
-  final buttonStyle;
+  final buttonTextStyle;
+  final height;
+  final width;
 
-  const Button({Key key, @required this.buttonColor, @required this.buttonShadowColor, @required this.buttonText, @required this.onTap, this.buttonStyle})
+  const Button(
+      {Key key,
+      @required this.buttonColor,
+      @required this.buttonShadowColor,
+      @required this.buttonText,
+      @required this.onTap,
+      @required this.buttonTextStyle,
+      @required this.height,
+      @required this.width})
       : super(key: key);
 
   @override
@@ -54,11 +64,11 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
           child: Center(
             child: Text(
               widget.buttonText,
-              style: widget.buttonStyle,
+              style: widget.buttonTextStyle,
             ),
           ),
-          height: context.height * 5,
-          width: context.width * 80,
+          height: widget.height,
+          width: widget.width,
           decoration: BoxDecoration(
             color: widget.buttonColor,
             borderRadius: BorderRadius.circular(40),

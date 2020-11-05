@@ -78,10 +78,13 @@ class _SignInPageState extends State<SignInPage> {
             onTap: () {
               AlertDialogClass().alertDialog(context, "Complete");
             },
+
+            height: context.height * 5,
+            width: context.width * 80,
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Sign In",
-            buttonStyle: mainTheme.textTheme.headline6,
+            buttonTextStyle: mainTheme.textTheme.headline6,
           ),
           Spacer(),
           Row(

@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'MainPage.dart';
 import 'package:coffee_and_code/main.dart';
 
-List<String> _menuList = ["Sign In", "Sign Up", "Restore Password"];
+List<String> _menuList = ["Single Origin", "Single Serve", "Blend"];
 
 class SecondLeftBar extends StatefulWidget {
   @override
@@ -105,8 +105,6 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                 controller: myController,
                 scrollDirection: Axis.horizontal,
                 children: [
-                  MainPage(),
-                  MainPage(),
                   MainPage(),
                 ],
               ),
