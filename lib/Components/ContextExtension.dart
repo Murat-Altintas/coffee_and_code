@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+export 'package:get/get.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 }
 
 extension MediaQueryExtension on BuildContext {
-  double get height => mediaQuery.size.height / 100;
+  //double get height => mediaQuery.size.height / 100;
 
-  double get width => mediaQuery.size.width / 100;
+  //double get width => mediaQuery.size.width / 100;
 
   double get lowestText => height * 1.7;
 

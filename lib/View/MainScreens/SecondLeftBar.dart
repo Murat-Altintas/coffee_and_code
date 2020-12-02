@@ -1,10 +1,11 @@
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:coffee_and_code/Repository/Coffees.dart';
+import 'package:coffee_and_code/View/MainScreens/BottomBarWidget.dart';
+import 'file:///C:/Users/murat/Desktop/coffee_and_code/lib/Components/ProductWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'MainPage.dart';
-import 'package:coffee_and_code/main.dart';
 
 List<String> _menuList = ["Single Origin", "Single Serve", "Blend"];
 
@@ -14,7 +15,7 @@ class SecondLeftBar extends StatefulWidget {
 }
 
 class _SecondLeftBarState extends State<SecondLeftBar> {
-  PageController myController = PageController();
+  PageController _myController = PageController();
   int checkIndex = 0;
   double _top;
   List<double> pointsPositions;
@@ -47,7 +48,7 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                           top: height / 25,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              _myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -58,7 +59,7 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                           top: height / 3,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              _myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -69,7 +70,7 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                           top: height / 1.5,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              _myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -100,12 +101,27 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
             ),
             Expanded(
               flex: 5,
-              child: PageView(
-                physics: NeverScrollableScrollPhysics(),
-                controller: myController,
-                scrollDirection: Axis.horizontal,
+              child: Column(
                 children: [
-                  MainPage(),
+                  SizedBox(height: context.height  * 6),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Coffees", style: mainTheme.textTheme.headline4),
+                  ),
+                  SizedBox(height: context.height  * 6),
+                  Expanded(
+                    child: PageView(
+                      scrollDirection: Axis.vertical,
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _myController,
+                      children: coffeesType.map((e) => PageView(
+                                scrollDirection: Axis.horizontal,
+                                children: e.map<Widget>((e) => ProductWidget(e)).toList(),
+                              )).toList(),
+                    ),
+                  ),
+                  SizedBox(height: context.height  * 6, child: BottomBarWidget()),
+                  SizedBox(height: context.height  * 6),
                 ],
               ),
             ),

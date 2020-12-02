@@ -1,4 +1,3 @@
-import 'package:coffee_and_code/View/MainScreens/MainPage.dart';
 import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';

@@ -2,19 +2,20 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:get/get.dart';
 import 'View/LoginScreens/FirstLeftBar.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(GetMaterialApp(home: MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Builder(builder: (context) {
+    return Builder(builder: (context) {
         ThemeData mainTheme = _buildMainTheme(context);
         return Theme(data: mainTheme, child: SecondLeftBar());
-      }),
+      }
     );
   }
 
