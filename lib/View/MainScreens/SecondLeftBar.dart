@@ -1,11 +1,11 @@
-import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:coffee_and_code/Components/ProductWidget.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/BottomBarWidget.dart';
-import 'file:///C:/Users/murat/Desktop/coffee_and_code/lib/Components/ProductWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 
 List<String> _menuList = ["Single Origin", "Single Serve", "Blend"];
 

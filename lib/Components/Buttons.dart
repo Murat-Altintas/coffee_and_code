@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:flutter/widgets.dart';
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 
 class Button extends StatefulWidget {
   final buttonColor;
