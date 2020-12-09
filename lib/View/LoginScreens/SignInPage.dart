@@ -64,8 +64,11 @@ class _SignInPageState extends State<SignInPage> {
                   suffixIcon: IconButton(
                       splashColor: mainTheme.primaryColorLight,
                       highlightColor: mainTheme.primaryColorLight,
-                      splashRadius: context.width * 5,
-                      icon: obscureText == true ? Icon(Icons.visibility_rounded, color: mainTheme.primaryColor) : Icon(Icons.visibility_off),
+                      splashRadius: context.width2 * 5,
+                      icon: obscureText == true
+                          ? Icon(Icons.visibility_rounded,
+                              color: mainTheme.primaryColor)
+                          : Icon(Icons.visibility_off),
                       onPressed: _showPassword),
                 ),
               ],
@@ -78,9 +81,8 @@ class _SignInPageState extends State<SignInPage> {
             onTap: () {
               AlertDialogClass().alertDialog(context, "Complete");
             },
-
-            height: context.height * 5,
-            width: context.width * 80,
+            height: context.height2 * 5,
+            width: context.width2 * 80,
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Sign In",
@@ -110,7 +112,8 @@ class _SignInPageState extends State<SignInPage> {
               SocialMediaButtons(
                 buttonColor: Colors.indigo,
                 buttonShadowColor: Colors.indigo,
-                socialChild: SvgPicture.asset("assets/images/facebook-app-symbol.svg"),
+                socialChild:
+                    SvgPicture.asset("assets/images/facebook-app-symbol.svg"),
                 onTap: () {},
               ),
               SocialMediaButtons(

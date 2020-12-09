@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:flutter/widgets.dart';
 
 class Button extends StatefulWidget {
   final buttonColor;
@@ -75,7 +75,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
             boxShadow: [
               BoxShadow(
                 color: widget.buttonShadowColor,
-                blurRadius: context.width * 3,
+                blurRadius: context.width2 * 3,
                 offset: Offset(3, 3),
                 spreadRadius: 1,
               ),

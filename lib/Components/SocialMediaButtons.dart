@@ -10,14 +10,20 @@ class SocialMediaButtons extends StatefulWidget {
   final socialChild;
 
   const SocialMediaButtons(
-      {Key key, @required this.buttonColor, @required this.buttonShadowColor, @required this.onTap, this.buttonStyle, this.socialChild})
+      {Key key,
+      @required this.buttonColor,
+      @required this.buttonShadowColor,
+      @required this.onTap,
+      this.buttonStyle,
+      this.socialChild})
       : super(key: key);
 
   @override
   _SocialMediaButtonsState createState() => _SocialMediaButtonsState();
 }
 
-class _SocialMediaButtonsState extends State<SocialMediaButtons> with SingleTickerProviderStateMixin {
+class _SocialMediaButtonsState extends State<SocialMediaButtons>
+    with SingleTickerProviderStateMixin {
   double _scale;
   AnimationController _controller;
 
@@ -52,8 +58,8 @@ class _SocialMediaButtonsState extends State<SocialMediaButtons> with SingleTick
       child: Transform.scale(
         scale: _scale,
         child: Container(
-          width: context.width * 20,
-          height: context.height * 10,
+          width: context.width2 * 20,
+          height: context.height2 * 10,
           padding: context.paddingSocialIcons,
           child: widget.socialChild,
           decoration: BoxDecoration(
@@ -62,7 +68,7 @@ class _SocialMediaButtonsState extends State<SocialMediaButtons> with SingleTick
             boxShadow: [
               BoxShadow(
                 color: widget.buttonShadowColor,
-                blurRadius: context.width * 3,
+                blurRadius: context.width2 * 3,
                 offset: Offset(3, 3),
                 spreadRadius: 1,
               ),

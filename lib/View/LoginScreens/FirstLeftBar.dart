@@ -40,7 +40,11 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                 child: LayoutBuilder(
                   builder: (context, constrants) {
                     double height = constrants.maxHeight;
-                    pointsPositions = [height / 5.4, height / 2.1, height / 1.17];
+                    pointsPositions = [
+                      height / 5.4,
+                      height / 2.1,
+                      height / 1.17
+                    ];
                     _top ??= pointsPositions[0];
                     return Stack(
                       children: [
@@ -48,7 +52,9 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           top: height / 25,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              myController.animateToPage(i,
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -59,7 +65,9 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           top: height / 3,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              myController.animateToPage(i,
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -70,7 +78,9 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           top: height / 1.5,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                              myController.animateToPage(i,
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
                             checkIndex: checkIndex,
@@ -82,10 +92,10 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           curve: Curves.elasticInOut,
                           top: _top - height / 16,
                           child: Padding(
-                            padding: EdgeInsets.only(left: context.width * 10),
+                            padding: EdgeInsets.only(left: context.width2 * 10),
                             child: Container(
-                              width: context.width * 1.5,
-                              height: context.width * 1.5,
+                              width: context.width2 * 1.5,
+                              height: context.width2 * 1.5,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: mainTheme.primaryColorLight,
@@ -149,12 +159,15 @@ class _menuTextWidget extends StatelessWidget {
       child: FlatButton(
         splashColor: mainTheme.primaryColor,
         highlightColor: mainTheme.primaryColor,
-        minWidth: context.width * 32,
+        minWidth: context.width2 * 32,
         onPressed: () {
           indexChecked(i);
           controller(i);
         },
-        child: Text(_menuList[i], style: checkIndex == i ? mainTheme.textTheme.headline2 : mainTheme.textTheme.headline6),
+        child: Text(_menuList[i],
+            style: checkIndex == i
+                ? mainTheme.textTheme.headline2
+                : mainTheme.textTheme.headline6),
       ),
     );
   }

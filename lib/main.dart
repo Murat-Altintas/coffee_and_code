@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
 import 'View/LoginScreens/FirstLeftBar.dart';
+import 'View/LoginScreens/FirstLeftBar.dart';
 
-void main() {
-  runApp(GetMaterialApp(home: MyApp()));
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Builder(builder: (context) {
         ThemeData mainTheme = _buildMainTheme(context);
-        return Theme(data: mainTheme, child: SecondLeftBar());
-      }
+        return Theme(
+          data: mainTheme,
+          child: SecondLeftBar(),
+          // child: FirstLeftBar(),
+        );
+      }),
     );
   }
 
@@ -39,7 +44,7 @@ class MyApp extends StatelessWidget {
       cardColor: Color(0xffffffff),
       dividerColor: Color(0xffffffff),
       //XX
-      highlightColor: Colors.lightGreen,
+      highlightColor: Color.fromRGBO(84, 54, 62, 1),
       splashColor: Color(0xffE8E8E8),
       selectedRowColor: Color(0xfff5f5f5),
       unselectedWidgetColor: Color(0x8a000000),
@@ -51,17 +56,19 @@ class MyApp extends StatelessWidget {
       textSelectionColor: Color(0xffef9a9a),
       cursorColor: Color(0xff4285f4),
       textSelectionHandleColor: Color(0xffe57373),
-      toggleButtonsTheme:
-          ToggleButtonsThemeData(fillColor: Colors.pinkAccent, textStyle: TextStyle(color: Colors.white), selectedColor: Colors.white),
+      toggleButtonsTheme: ToggleButtonsThemeData(
+          fillColor: Colors.pinkAccent,
+          textStyle: TextStyle(color: Colors.white),
+          selectedColor: Colors.white),
       //floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
 
       dialogBackgroundColor: Color(0xffffffff),
 
-      indicatorColor: Colors.deepPurple,
+      indicatorColor: Colors.blue,
       //XX
       hintColor: Color(0x8a000000),
       //xx
-      errorColor: Colors.teal,
+      errorColor: Colors.red,
       buttonTheme: ButtonThemeData(
         textTheme: ButtonTextTheme.normal,
         minWidth: 88,
@@ -70,7 +77,7 @@ class MyApp extends StatelessWidget {
         shape: RoundedRectangleBorder(
           side: BorderSide(
             color: Color(0xff000000),
-            width: context.height * 10,
+            width: context.height2 * 10,
             style: BorderStyle.none,
           ),
           borderRadius: BorderRadius.all(Radius.circular(2.0)),
@@ -123,7 +130,7 @@ class MyApp extends StatelessWidget {
         headline4: TextStyle(
           color: Color.fromRGBO(230, 132, 97, 1),
           fontFamily: "Lora",
-          fontSize: context.height * 5,
+          fontSize: context.height2 * 4,
         ),
         headline5: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
@@ -348,7 +355,7 @@ class MyApp extends StatelessWidget {
       ),
 
       iconTheme: IconThemeData(
-        color: Colors.purple,
+        color: Color.fromRGBO(230, 132, 97, 1),
       ),
       primaryIconTheme: IconThemeData(
         color: Colors.purple,

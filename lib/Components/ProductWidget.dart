@@ -1,9 +1,12 @@
+import 'package:coffee_and_code/Components/CoffeScene.dart';
+import 'package:coffee_and_code/Components/CoffeeDescriptionScene.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
-import 'package:coffee_and_code/View/MainScreens/ProductInfoPage.dart';
+import 'package:coffee_and_code/View/ProductInfoPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:graphx/graphx.dart';
+import 'ContextExtension.dart';
 import 'package:get/get.dart';
-
 
 class ProductWidget extends StatefulWidget {
   ProductWidget(this.coffeesClass);
@@ -23,16 +26,15 @@ class _ProductWidgetState extends State<ProductWidget> {
       height: context.height * 70,
       child: GestureDetector(
         onTap: () {
-          //Get.to(ProductInfoWidget());
+          Get.to(ProductInfoPage());
         },
         child: Stack(
           children: [
             Positioned(
-              top: context.height * 20,
-              left: context.width * 7,
+              top: context.height2 * 20,
               child: Container(
-                  height: context.height * 40,
-                  width: context.width * 70,
+                  height: context.height2 * 40,
+                  width: context.width2 * 70,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       gradient: LinearGradient(
@@ -42,55 +44,77 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ))),
             ),
             Positioned(
-              bottom: context.height * 32,
-              left: context.width * 28,
-              child: Image.asset(
-                widget.coffeesClass.imagePath,
-                height: context.height * 35,
+              left: context.width2 * 35,
+              child: Container(
+                //width: context.width2 * .10,
+                height: context.height2 * 35,
+                // color: Colors.red,
+                child: SceneBuilderWidget(
+                  builder: () => SceneController(
+                    front: CoffeeScene(widget.coffeesClass.imagePath),
+                  ),
+                ),
               ),
             ),
+            // Positioned.fill(
+            //   child: Align(
+            //     alignment: Alignment.topCenter,
+            //     child: Image.asset(
+            //       widget.coffeesClass.imagePath,
+            //       height: context.height2 * 35,
+            //     ),
+            //   ),
+            // ),
+
             Positioned(
-              top: context.height * 33,
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.coffeesClass.name,
-                      style: mainTheme.textTheme.bodyText1,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: context.width * 60,
-                      child: Column(
-                        children: [
-                          Text(
-                            widget.coffeesClass.discription,
-                            style: mainTheme.textTheme.bodyText2,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                widget.coffeesClass.price.toString() + "€",
-                                style: mainTheme.textTheme.bodyText1,
-                              ),
-                              Text(
-                                widget.coffeesClass.weight,
-                                style: mainTheme.textTheme.bodyText1,
-                              ),
-                            ],
-                          ),
-                        ],
+              top: context.height2 * 33,
+              child: SceneBuilderWidget(
+                builder: () => SceneController(
+                  front: CoffeeDescriptionScene(widget.coffeesClass),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*
+                      Text(
+                        widget.coffeesClass.name,
+                        style: mainTheme.textTheme.bodyText1,
                       ),
-                    ),
-                  ],
+                       */
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: context.width2 * 60,
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.coffeesClass.discription,
+                              style: mainTheme.textTheme.bodyText2,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  widget.coffeesClass.price.toString() + "€",
+                                  style: mainTheme.textTheme.bodyText1,
+                                ),
+                                Text(
+                                  widget.coffeesClass.weight,
+                                  style: mainTheme.textTheme.bodyText1,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

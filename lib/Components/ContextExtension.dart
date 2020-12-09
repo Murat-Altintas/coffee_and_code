@@ -1,45 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-export 'package:get/get.dart';
-
-extension ContextExtension on BuildContext {
-  MediaQueryData get mediaQuery => MediaQuery.of(this);
-}
 
 extension MediaQueryExtension on BuildContext {
-  //double get height => mediaQuery.size.height / 100;
+  double get height2 => mq.size.height / 100;
+  double get width2 => mq.size.width / 100;
 
-  //double get width => mediaQuery.size.width / 100;
+  double get lowestText => height2 * 1.7;
 
-  double get lowestText => height * 1.7;
+  double get smallText => height2 * 2;
 
-  double get smallText => height * 2;
+  double get normalText => height2 * 2.5;
 
-  double get normalText => height * 2.5;
+  double get heightText => height2 * 3;
 
-  double get heightText => height * 3;
+  double get paddingLowValue => width2 * 1;
 
-  double get paddingLowValue => width * 1;
+  double get paddingMediumValue => width2 * 5;
 
-  double get paddingMediumValue => width * 5;
+  double get paddingheight2Value => width2 * 12;
 
-  double get paddingHeightValue => width * 12;
+  double get paddingSocialIconsValue => width2 * 4;
 
-  double get paddingSocialIconsValue => width * 4;
+  double get iconSmall => height2 * 4;
 
-  double get iconSmall => height * 4;
+  double get iconMedium => height2 * 5;
 
-  double get iconMedium => height * 5;
+  double get fieldSpaceContainer => height2 * 1;
 
-  double get fieldSpaceContainer => height * 1;
+  double get lowestContainer => height2 * 3;
 
-  double get lowestContainer => height * 3;
+  double get lowContainer => height2 * 5;
 
-  double get lowContainer => height * 5;
+  double get mediumContainer => height2 * 7;
 
-  double get mediumContainer => height * 7;
-
-  double get heighContainer => height * 9;
+  double get heightContainer => height2 * 9;
 }
 
 extension ThemeExtension on BuildContext {
@@ -53,9 +46,15 @@ extension ThemeExtension on BuildContext {
 extension PaddingExtension on BuildContext {
   EdgeInsets get paddingSocialIcons => EdgeInsets.all(paddingSocialIconsValue);
 
-  EdgeInsets get paddingMedium => EdgeInsets.symmetric(horizontal: paddingMediumValue);
+  EdgeInsets get paddingMedium =>
+      EdgeInsets.symmetric(horizontal: paddingMediumValue);
 
-  EdgeInsets get paddingText => EdgeInsets.only(left: paddingHeightValue);
+  EdgeInsets get paddingText => EdgeInsets.only(left: paddingheight2Value);
 
-  EdgeInsets get paddingLow => EdgeInsets.symmetric(horizontal: paddingLowValue);
+  EdgeInsets get paddingLow =>
+      EdgeInsets.symmetric(horizontal: paddingLowValue);
+}
+
+extension ContextExtension on BuildContext {
+  MediaQueryData get mq => MediaQuery.of(this);
 }

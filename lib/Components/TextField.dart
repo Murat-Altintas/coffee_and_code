@@ -34,10 +34,11 @@ class TextFields extends StatefulWidget {
 
 class _TextFieldsState extends State<TextFields> {
   @override
-  Widget build(BuildContext context) {    final mainTheme = Theme.of(context);
+  Widget build(BuildContext context) {
+    final mainTheme = Theme.of(context);
 
-  return Container(
-      height: context.heighContainer,
+    return Container(
+      height: context.heightContainer,
       child: TextFormField(
         focusNode: widget.focusNode,
         keyboardType: widget.keyboardType,
@@ -46,7 +47,8 @@ class _TextFieldsState extends State<TextFields> {
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          errorStyle: mainTheme.textTheme.headline3.copyWith(fontSize: context.smallText, color: Colors.red),
+          errorStyle: mainTheme.textTheme.headline3
+              .copyWith(fontSize: context.smallText, color: Colors.red),
           suffixIcon: widget.suffixIcon,
           errorText: widget.error,
           border: UnderlineInputBorder(

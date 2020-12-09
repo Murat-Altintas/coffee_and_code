@@ -56,8 +56,8 @@ class _RestorePasswordPageState extends State<RestorePasswordPage> {
             onTap: () {
               obscureText = !obscureText;
             },
-            height: context.height * 5,
-            width: context.width * 80,
+            height: context.height2 * 5,
+            width: context.width2 * 80,
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Restore Password",

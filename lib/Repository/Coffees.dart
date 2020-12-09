@@ -84,7 +84,7 @@ List<CoffeesClass> blendCoffees = <CoffeesClass>[
     name: "Christmas Blend",
     discription:
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
-    imagePath: "assets/images/christmas_decaf.png",
+    imagePath: "assets/images/christmas_blend.png",
     weight: "250gr",
     price: 35,
     colors: [Color.fromRGBO(177, 38, 45, 1), Color.fromRGBO(235, 105, 103, 1)],
