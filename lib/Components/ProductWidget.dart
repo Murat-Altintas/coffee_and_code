@@ -26,7 +26,7 @@ class _ProductWidgetState extends State<ProductWidget> {
       height: context.height * 70,
       child: GestureDetector(
         onTap: () {
-          Get.to(ProductInfoPage());
+          Get.to(ProductInfoPage(widget.coffeesClass));
         },
         child: Stack(
           children: [

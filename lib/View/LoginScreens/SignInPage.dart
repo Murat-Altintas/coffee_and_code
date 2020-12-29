@@ -88,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
             buttonText: "Sign In",
             buttonTextStyle: mainTheme.textTheme.headline6,
           ),
-          Spacer(),
+          Spacer(flex: 2),
           Row(
             children: [
               Expanded(
@@ -97,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
                   thickness: 1,
                 ),
               ),
-              Text("  or sign in with  "),
+              Text("  or sign up with  ", style: mainTheme.textTheme.headline3,),
               Expanded(
                 child: Divider(
                   color: mainTheme.primaryColorLight,

@@ -90,7 +90,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
           Spacer(
-            flex: 4,
           ),
           Button(
             onTap: () {},
@@ -101,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
             buttonText: "Sign Up",
             buttonTextStyle: mainTheme.textTheme.headline6,
           ),
-          Spacer(),
+          Spacer(flex: 2),
           Row(
             children: [
               Expanded(
@@ -110,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   thickness: 1,
                 ),
               ),
-              Text("  or sign up with  "),
+              Text("  or sign up with  ", style: mainTheme.textTheme.headline3,),
               Expanded(
                 child: Divider(
                   color: mainTheme.primaryColorLight,

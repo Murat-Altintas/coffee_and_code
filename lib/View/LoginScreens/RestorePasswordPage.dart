@@ -51,7 +51,6 @@ class _RestorePasswordPageState extends State<RestorePasswordPage> {
               obscureText: false,
             ),
           ),
-          Spacer(),
           Button(
             onTap: () {
               obscureText = !obscureText;
@@ -64,7 +63,7 @@ class _RestorePasswordPageState extends State<RestorePasswordPage> {
             buttonTextStyle: mainTheme.textTheme.headline6,
           ),
           Spacer(
-            flex: 5,
+            flex: 6,
           ),
         ],
       ),
