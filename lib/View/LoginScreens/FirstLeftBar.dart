@@ -167,7 +167,7 @@ class _menuTextWidget extends StatelessWidget {
         child: Text(_menuList[i],
             style: checkIndex == i
                 ? mainTheme.textTheme.headline2
-                : mainTheme.textTheme.headline6),
+                : mainTheme.textTheme.button),
       ),
     );
   }

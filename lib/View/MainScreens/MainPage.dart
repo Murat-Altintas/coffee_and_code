@@ -197,7 +197,7 @@ class _MenuTextWidget extends StatelessWidget {
           indexChecked(i);
           animationController(i);
         },
-        child: Text(textList[i], style: chooseLeftTab == i ? mainTheme.textTheme.headline2 : mainTheme.textTheme.headline6),
+        child: Text(textList[i], style: chooseLeftTab == i ? mainTheme.textTheme.headline2 : mainTheme.textTheme.button),
       ),
     );
   }

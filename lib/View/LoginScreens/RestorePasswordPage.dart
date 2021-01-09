@@ -60,7 +60,7 @@ class _RestorePasswordPageState extends State<RestorePasswordPage> {
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Restore Password",
-            buttonTextStyle: mainTheme.textTheme.headline6,
+            buttonTextStyle: mainTheme.textTheme.button,
           ),
           Spacer(
             flex: 6,

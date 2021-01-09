@@ -40,9 +40,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        colors: widget.coffeesClass.colors,
+                        colors: widget.coffeesClass.gradient,
                       ))),
             ),
+
             Positioned(
               left: context.width2 * 35,
               child: Container(
@@ -51,6 +52,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 // color: Colors.red,
                 child: SceneBuilderWidget(
                   builder: () => SceneController(
+
                     front: CoffeeScene(widget.coffeesClass.imagePath),
                   ),
                 ),

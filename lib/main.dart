@@ -11,16 +11,17 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Builder(builder: (context) {
-        ThemeData mainTheme = _buildMainTheme(context);
-        return Theme(
-          data: mainTheme,
-          child: SecondLeftBar(),
-          // child: FirstLeftBar(),
-        );
-      }),
+    return MaterialApp(
+      home: Builder(
+          builder: (context) {
+            return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: _buildMainTheme(context),
+              home: SecondLeftBar(),
+              // child: FirstLeftBar(),
+            );
+          }
+      ),
     );
   }
 
@@ -140,7 +141,7 @@ class MyApp extends StatelessWidget {
         headline6: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
           fontFamily: "Lora",
-          fontSize: context.normalText,
+          fontSize: context.height2 * 4,
         ),
         subtitle1: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
@@ -164,10 +165,9 @@ class MyApp extends StatelessWidget {
           fontStyle: FontStyle.normal,
         ),
         button: TextStyle(
-          color: Color(0xdd000000),
-          fontSize: null,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
+          color: Color.fromRGBO(84, 54, 62, 1),
+          fontFamily: "Lora",
+          fontSize: context.normalText,
         ),
         subtitle2: TextStyle(
           color: Color(0xff000000),
@@ -185,12 +185,14 @@ class MyApp extends StatelessWidget {
       primaryTextTheme: TextTheme(
         //XX
         headline1: TextStyle(
-          color: Colors.blue,
-          fontFamily: "ZonaBold",
+          color: Color.fromRGBO(84, 54, 62, 1),
+          fontFamily: "Roboto",
+          fontSize: context.smallText,
         ),
         headline2: TextStyle(
-          color: Colors.deepPurple,
-          fontFamily: "ZonaLight",
+          color: Colors.white,
+          fontFamily: "Lora",
+          fontSize: context.normalText,
         ),
         headline3: TextStyle(
           color: Colors.blueGrey,
@@ -212,49 +214,49 @@ class MyApp extends StatelessWidget {
         ),
         headline6: TextStyle(
           //XX
-          color: Color(0xfffafafa),
+          color: Colors.white,
           fontSize: 12,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         subtitle1: TextStyle(
-          color: Color(0xfffafafa),
+          color: Colors.white,
           fontSize: 15,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         bodyText1: TextStyle(
-          color: Color(0xfffafafa),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         bodyText2: TextStyle(
-          color: Color(0xffffffff),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         caption: TextStyle(
-          color: Color(0xb3ffffff),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         button: TextStyle(
-          color: Color(0xffffffff),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         subtitle2: TextStyle(
-          color: Color(0xffffffff),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,
         ),
         overline: TextStyle(
-          color: Color(0xffffffff),
+          color: Colors.white,
           fontSize: null,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,

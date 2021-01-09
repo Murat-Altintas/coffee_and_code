@@ -98,7 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
             buttonText: "Sign Up",
-            buttonTextStyle: mainTheme.textTheme.headline6,
+            buttonTextStyle: mainTheme.textTheme.button,
           ),
           Spacer(flex: 2),
           Row(
