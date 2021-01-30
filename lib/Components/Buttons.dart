@@ -5,21 +5,19 @@ import 'package:flutter/widgets.dart';
 class Button extends StatefulWidget {
   final buttonColor;
   final buttonShadowColor;
-  final buttonText;
   final onTap;
-  final buttonTextStyle;
   final height;
   final width;
+  final child;
 
   const Button(
       {Key key,
       @required this.buttonColor,
       @required this.buttonShadowColor,
-      @required this.buttonText,
       @required this.onTap,
-      @required this.buttonTextStyle,
       @required this.height,
-      @required this.width})
+      @required this.width,
+      @required this.child})
       : super(key: key);
 
   @override
@@ -62,10 +60,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
         scale: _scale,
         child: Container(
           child: Center(
-            child: Text(
-              widget.buttonText,
-              style: widget.buttonTextStyle,
-            ),
+            child: widget.child,
           ),
           height: widget.height,
           width: widget.width,

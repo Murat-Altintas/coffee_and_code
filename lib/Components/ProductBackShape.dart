@@ -12,7 +12,7 @@ class ProductBackShape extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     Path path_0 = Path();
-    path_0.lineTo(size.width * 0, size.height * .8);
+    path_0.lineTo(size.width * 0, size.height * .7);
     path_0.lineTo(size.width * 1, size.height * 0.55);
     path_0.lineTo(size.width * 1, size.height * 0);
     path_0.close();

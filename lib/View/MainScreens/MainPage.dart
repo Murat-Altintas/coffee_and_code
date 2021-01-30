@@ -32,7 +32,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
             child: LayoutBuilder(
               builder: (context, constrants) {
                 double height = constrants.maxHeight;
-                _pointsPositions = [height / 5.2, height / 2.1, height / 1.35, height / 1.02];
+                _pointsPositions = [height / 6, height / 2.4, height / 1.47, height / 1.02];
                 _top ??= _pointsPositions[0];
                 return Stack(
                   children: [
@@ -49,7 +49,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       ),
                     ),
                     Positioned(
-                      top: height / 3.3,
+                      top: height / 3.8,
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
@@ -61,7 +61,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       ),
                     ),
                     Positioned(
-                      top: height / 1.7,
+                      top: height / 1.9,
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
@@ -116,9 +116,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                 Row(
                   children: [
                     _leftTabs == 0
-                        ? Text("Single Origin", style: mainTheme.textTheme.headline4)
+                        ? Text("African Coffees", style: mainTheme.textTheme.headline4)
                         : _leftTabs == 1
-                            ? Text("Single Serve", style: mainTheme.textTheme.headline4)
+                            ? Text("American Coffees", style: mainTheme.textTheme.headline4)
                             : _leftTabs == 2
                                 ? Text("Blend", style: mainTheme.textTheme.headline4)
                                 : _leftTabs == 3

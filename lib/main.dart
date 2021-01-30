@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       home: Builder(
           builder: (context) {
             return GetMaterialApp(
+
               debugShowCheckedModeBanner: false,
               theme: _buildMainTheme(context),
               home: SecondLeftBar(),
@@ -195,15 +196,14 @@ class MyApp extends StatelessWidget {
           fontSize: context.normalText,
         ),
         headline3: TextStyle(
-          color: Colors.blueGrey,
-          fontFamily: "ZonaLight",
+          color: Color.fromRGBO(230, 132, 97, 1),
+          fontFamily: "Roboto",
+          fontSize: context.smallText,
         ),
         headline4: TextStyle(
-          //XX
-          color: Color(0xfffafafa),
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
+          color: Color.fromRGBO(84, 54, 62, 1),
+          fontFamily: "Lora",
+          fontSize: context.smallText,
         ),
         headline5: TextStyle(
           //XX

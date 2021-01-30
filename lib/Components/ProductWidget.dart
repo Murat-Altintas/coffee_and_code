@@ -1,7 +1,7 @@
 import 'package:coffee_and_code/Components/CoffeScene.dart';
 import 'package:coffee_and_code/Components/CoffeeDescriptionScene.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
-import 'package:coffee_and_code/View/ProductInfoPage.dart';
+import 'package:coffee_and_code/View/MainScreens/ProductInfo/ProductInfoPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graphx/graphx.dart';
@@ -52,7 +52,6 @@ class _ProductWidgetState extends State<ProductWidget> {
                 // color: Colors.red,
                 child: SceneBuilderWidget(
                   builder: () => SceneController(
-
                     front: CoffeeScene(widget.coffeesClass.imagePath),
                   ),
                 ),
@@ -93,7 +92,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                         child: Column(
                           children: [
                             Text(
-                              widget.coffeesClass.discription,
+                              widget.coffeesClass.description,
                               style: mainTheme.textTheme.bodyText2,
                             ),
                             SizedBox(

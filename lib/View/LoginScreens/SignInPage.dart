@@ -85,8 +85,7 @@ class _SignInPageState extends State<SignInPage> {
             width: context.width2 * 80,
             buttonColor: mainTheme.primaryColorLight,
             buttonShadowColor: mainTheme.primaryColorLight,
-            buttonText: "Sign In",
-            buttonTextStyle: mainTheme.textTheme.button,
+            child: Text("Sign In", style: mainTheme.textTheme.button,),
           ),
           Spacer(flex: 2),
           Row(

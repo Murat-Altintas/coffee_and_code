@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 
-List<String> _coffeeList = ["Single Origin", "Single Serve", "Blend", "Options"];
+List<String> _coffeeList = ["Africa", "America", "Blend", "Options"];
 
 class SecondLeftBar extends StatefulWidget {
   @override
@@ -53,15 +53,11 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                 )),
             // list[_checkTab],
             Expanded(
-              flex: 1,
               child: Padding(
                 padding: const EdgeInsets.only(left: 75),
-                child: SizedBox(
-                  height: context.height2 * 6,
-                  child: BottomBarWidget(
-                    currentTab: _tabChecked,
-                  ),
-                ),
+                child: BottomBarWidget(
+                  currentTab: _tabChecked,
+                )
               ),
             ),
             //SizedBox(height: context.height2 * 3),
@@ -100,8 +96,7 @@ class BottomBarWidget extends StatelessWidget {
         return Row(
           children: [
             Button(
-              buttonText: ButtonCategoryList[index],
-              buttonTextStyle: mainTheme.textTheme.headline5,
+              child: Text(ButtonCategoryList[index], style: mainTheme.textTheme.headline5),
               buttonColor: mainTheme.primaryColor,
               buttonShadowColor: mainTheme.primaryColor,
               height: context.height2 * 5,
