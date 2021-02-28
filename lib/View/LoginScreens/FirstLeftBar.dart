@@ -15,10 +15,10 @@ class FirstLeftBar extends StatefulWidget {
 }
 
 class _FirstLeftBarState extends State<FirstLeftBar> {
-  PageController myController = PageController();
-  int checkIndex = 0;
+  PageController _myController = PageController();
+  int _checkIndex = 0;
   double _top;
-  List<double> pointsPositions;
+  List<double> _pointsPositions;
 
   @override
   void initState() {
@@ -40,24 +40,24 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                 child: LayoutBuilder(
                   builder: (context, constrants) {
                     double height = constrants.maxHeight;
-                    pointsPositions = [
+                    _pointsPositions = [
                       height / 5.4,
                       height / 2.1,
                       height / 1.17
                     ];
-                    _top ??= pointsPositions[0];
+                    _top ??= _pointsPositions[0];
                     return Stack(
                       children: [
                         Positioned(
                           top: height / 25,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i,
+                              _myController.animateToPage(i,
                                   duration: Duration(seconds: 2),
                                   curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
-                            checkIndex: checkIndex,
+                            checkIndex: _checkIndex,
                             i: 0,
                           ),
                         ),
@@ -65,12 +65,12 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           top: height / 3,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i,
+                              _myController.animateToPage(i,
                                   duration: Duration(seconds: 2),
                                   curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
-                            checkIndex: checkIndex,
+                            checkIndex: _checkIndex,
                             i: 1,
                           ),
                         ),
@@ -78,12 +78,12 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                           top: height / 1.5,
                           child: _menuTextWidget(
                             controller: (i) {
-                              myController.animateToPage(i,
+                              _myController.animateToPage(i,
                                   duration: Duration(seconds: 2),
                                   curve: Curves.fastLinearToSlowEaseIn);
                             },
                             indexChecked: indexChecked,
-                            checkIndex: checkIndex,
+                            checkIndex: _checkIndex,
                             i: 2,
                           ),
                         ),
@@ -113,7 +113,7 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
               flex: 5,
               child: PageView(
                 physics: NeverScrollableScrollPhysics(),
-                controller: myController,
+                controller: _myController,
                 scrollDirection: Axis.horizontal,
                 children: [
                   SignInPage(),
@@ -130,8 +130,8 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
 
   void indexChecked(int i) {
     setState(() {
-      checkIndex = i;
-      _top = pointsPositions[i] + 0;
+      _checkIndex = i;
+      _top = _pointsPositions[i] + 0;
     });
   }
 }

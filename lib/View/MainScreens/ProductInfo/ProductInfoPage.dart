@@ -27,7 +27,7 @@ class _ProductInfoPageState extends State<ProductInfoPage> {
           children: [
             TopSpecs(widget.coffeesClass),
             Positioned(
-              top: context.height2 * 67,
+              top: context.height2 * 69,
               left: context.width2 * 5,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,11 +39,17 @@ class _ProductInfoPageState extends State<ProductInfoPage> {
                       SizedBox(
                         height: context.height2 * 2,
                       ),
-                      BottomSpecs(title: "AROMA", subtitle: widget.coffeesClass.aroma, icon: Icons.free_breakfast),
+                      BottomSpecs(
+                          title: "AROMA",
+                          subtitle: widget.coffeesClass.aroma,
+                          icon: Icons.free_breakfast),
                       SizedBox(
                         height: context.height2 * 2,
                       ),
-                      BottomSpecs(title: "BREWİNG", subtitle: widget.coffeesClass.brewing, icon: Icons.free_breakfast),
+                      BottomSpecs(
+                          title: "BREWİNG",
+                          subtitle: widget.coffeesClass.brewing,
+                          icon: Icons.free_breakfast),
                     ],
                   ),
                   SizedBox(
@@ -56,11 +62,17 @@ class _ProductInfoPageState extends State<ProductInfoPage> {
                       SizedBox(
                         height: context.height2 * 5,
                       ),
-                      BottomSpecs(title: "HEIGHT", subtitle: widget.coffeesClass.height, icon: Icons.free_breakfast),
+                      BottomSpecs(
+                          title: "HEIGHT",
+                          subtitle: widget.coffeesClass.height,
+                          icon: Icons.free_breakfast),
                       SizedBox(
                         height: context.height2 * 2,
                       ),
-                      BottomSpecs(title: "VARIETY", subtitle: widget.coffeesClass.variety, icon: Icons.free_breakfast),
+                      BottomSpecs(
+                          title: "VARIETY",
+                          subtitle: widget.coffeesClass.variety,
+                          icon: Icons.free_breakfast),
                     ],
                   ),
                 ],

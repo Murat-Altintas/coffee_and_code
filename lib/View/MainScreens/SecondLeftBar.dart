@@ -43,10 +43,12 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                       mainList: _coffeeList,
                     ),
                     Center(
-                      child: Text('Machines', style: mainTheme.textTheme.headline3),
+                      child: Text('Machines',
+                          style: mainTheme.textTheme.headline3),
                     ),
                     Center(
-                      child: Text('3rd Party', style: mainTheme.textTheme.headline3),
+                      child: Text('3rd Party',
+                          style: mainTheme.textTheme.headline3),
                     ),
                   ],
                   controller: _myTabController,
@@ -54,13 +56,12 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
             // list[_checkTab],
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 75),
-                child: BottomBarWidget(
-                  currentTab: _tabChecked,
-                )
-              ),
+                  padding: const EdgeInsets.only(left: 75),
+                  child: BottomBarWidget(
+                    currentTab: _tabChecked,
+                  )),
             ),
-            //SizedBox(height: context.height2 * 3),
+            SizedBox(height: context.height2 * 1),
           ],
         ),
       ),
@@ -96,7 +97,8 @@ class BottomBarWidget extends StatelessWidget {
         return Row(
           children: [
             Button(
-              child: Text(ButtonCategoryList[index], style: mainTheme.textTheme.headline5),
+              child: Text(ButtonCategoryList[index],
+                  style: mainTheme.textTheme.headline5),
               buttonColor: mainTheme.primaryColor,
               buttonShadowColor: mainTheme.primaryColor,
               height: context.height2 * 5,

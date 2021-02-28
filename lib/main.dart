@@ -1,10 +1,7 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
-import 'View/LoginScreens/FirstLeftBar.dart';
-import 'View/LoginScreens/FirstLeftBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,17 +9,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Builder(
-          builder: (context) {
-            return GetMaterialApp(
-
-              debugShowCheckedModeBanner: false,
-              theme: _buildMainTheme(context),
-              home: SecondLeftBar(),
-              // child: FirstLeftBar(),
-            );
-          }
-      ),
+      home: Builder(builder: (context) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: _buildMainTheme(context),
+          home: SecondLeftBar(),
+          // child: FirstLeftBar(),
+        );
+      }),
     );
   }
 
@@ -43,24 +37,26 @@ class MyApp extends StatelessWidget {
       //scaffoldBackgroundColor: Color.fromRGBO(84, 54, 62, 1),
       //xx
       bottomAppBarColor: Color(0xffffffff),
-      cardColor: Color(0xffffffff),
-      dividerColor: Color(0xffffffff),
+      cardColor: Colors.red,
+      dividerColor: Colors.red,
       //XX
       highlightColor: Color.fromRGBO(84, 54, 62, 1),
-      splashColor: Color(0xffE8E8E8),
-      selectedRowColor: Color(0xfff5f5f5),
+      splashColor: Colors.red,
+      selectedRowColor: Colors.red,
       unselectedWidgetColor: Color(0x8a000000),
       disabledColor: Color(0x61000000),
       //xx
       buttonColor: Color.fromRGBO(84, 54, 62, 1),
       //toggleableActiveColor: Color(0xffe53935),
-      secondaryHeaderColor: Color(0xffffebee),
+      secondaryHeaderColor: Colors.red,
       textSelectionColor: Color(0xffef9a9a),
       cursorColor: Color(0xff4285f4),
       textSelectionHandleColor: Color(0xffe57373),
       toggleButtonsTheme: ToggleButtonsThemeData(
           fillColor: Colors.pinkAccent,
-          textStyle: TextStyle(color: Colors.white),
+          textStyle: TextStyle(
+            color: Colors.red,
+          ),
           selectedColor: Colors.white),
       //floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
 
@@ -78,14 +74,14 @@ class MyApp extends StatelessWidget {
         padding: EdgeInsets.only(top: 0, bottom: 0, left: 16, right: 16),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: Color(0xff000000),
+            color: Colors.red,
             width: context.height2 * 10,
             style: BorderStyle.none,
           ),
           borderRadius: BorderRadius.all(Radius.circular(2.0)),
         ),
         alignedDropdown: false,
-        buttonColor: Color(0xffe0e0e0),
+        buttonColor: Colors.red,
         disabledColor: Color(0x61000000),
         highlightColor: Color(0x29000000),
         splashColor: Color(0x1f000000),
@@ -142,7 +138,7 @@ class MyApp extends StatelessWidget {
         headline6: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
           fontFamily: "Lora",
-          fontSize: context.height2 * 4,
+          fontSize: context.height2 * 3.5,
         ),
         subtitle1: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
@@ -188,7 +184,7 @@ class MyApp extends StatelessWidget {
         headline1: TextStyle(
           color: Color.fromRGBO(84, 54, 62, 1),
           fontFamily: "Roboto",
-          fontSize: context.smallText,
+          fontSize: context.smallestText,
         ),
         headline2: TextStyle(
           color: Colors.white,

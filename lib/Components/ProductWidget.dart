@@ -1,5 +1,6 @@
 import 'package:coffee_and_code/Components/CoffeScene.dart';
 import 'package:coffee_and_code/Components/CoffeeDescriptionScene.dart';
+import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/ProductInfo/ProductInfoPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,8 @@ class ProductWidget extends StatefulWidget {
   ProductWidget(this.coffeesClass);
 
   final CoffeesClass coffeesClass;
+
+  final shoppingController = Get.put(ShoppingController());
 
   @override
   _ProductWidgetState createState() => _ProductWidgetState();
@@ -43,11 +46,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                         colors: widget.coffeesClass.gradient,
                       ))),
             ),
-
             Positioned(
               left: context.width2 * 35,
               child: Container(
-                //width: context.width2 * .10,
                 height: context.height2 * 35,
                 // color: Colors.red,
                 child: SceneBuilderWidget(
@@ -57,16 +58,6 @@ class _ProductWidgetState extends State<ProductWidget> {
                 ),
               ),
             ),
-            // Positioned.fill(
-            //   child: Align(
-            //     alignment: Alignment.topCenter,
-            //     child: Image.asset(
-            //       widget.coffeesClass.imagePath,
-            //       height: context.height2 * 35,
-            //     ),
-            //   ),
-            // ),
-
             Positioned(
               top: context.height2 * 33,
               child: SceneBuilderWidget(
@@ -78,12 +69,6 @@ class _ProductWidgetState extends State<ProductWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /*
-                      Text(
-                        widget.coffeesClass.name,
-                        style: mainTheme.textTheme.bodyText1,
-                      ),
-                       */
                       SizedBox(
                         height: 20,
                       ),
@@ -106,9 +91,21 @@ class _ProductWidgetState extends State<ProductWidget> {
                                   style: mainTheme.textTheme.bodyText1,
                                 ),
                                 Text(
-                                  widget.coffeesClass.weight,
+                                  widget.coffeesClass.weight.first,
                                   style: mainTheme.textTheme.bodyText1,
                                 ),
+                                /*
+                                Obx(() => Text(
+                                    "${widget.shoppingController.products.fold<int>(0, (previousValue, element) => (previousValue + element.price)).toString()}")),
+
+                              Obx(() {
+                                var value = 0;
+                                for (var element in widget.shoppingController.products) {
+                                  value = value + element.price;
+                                }
+                                return Text(value.toString());
+                              })
+                               */
                               ],
                             ),
                           ],

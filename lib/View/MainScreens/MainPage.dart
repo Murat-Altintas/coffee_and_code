@@ -1,7 +1,12 @@
 import 'package:coffee_and_code/Components/ProductWidget.dart';
+import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
+
+import 'CartPage.dart';
 
 class MainCoffeeClass extends StatefulWidget {
   final List<String> mainList;
@@ -13,6 +18,7 @@ class MainCoffeeClass extends StatefulWidget {
 }
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
+  final basketController = Get.put(BasketController());
   List<double> _pointsPositions;
   double _top;
   PageController _myPageController = PageController();
@@ -32,7 +38,12 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
             child: LayoutBuilder(
               builder: (context, constrants) {
                 double height = constrants.maxHeight;
-                _pointsPositions = [height / 6, height / 2.4, height / 1.47, height / 1.02];
+                _pointsPositions = [
+                  height / 6,
+                  height / 2.4,
+                  height / 1.47,
+                  height / 1.02
+                ];
                 _top ??= _pointsPositions[0];
                 return Stack(
                   children: [
@@ -41,7 +52,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
-                          _myPageController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                          _myPageController.animateToPage(i,
+                              duration: Duration(seconds: 2),
+                              curve: Curves.fastLinearToSlowEaseIn);
                         },
                         indexChecked: _indexChecked,
                         chooseLeftTab: _leftTabs,
@@ -53,7 +66,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
-                          _myPageController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                          _myPageController.animateToPage(i,
+                              duration: Duration(seconds: 2),
+                              curve: Curves.fastLinearToSlowEaseIn);
                         },
                         indexChecked: _indexChecked,
                         chooseLeftTab: _leftTabs,
@@ -65,7 +80,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
-                          _myPageController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                          _myPageController.animateToPage(i,
+                              duration: Duration(seconds: 2),
+                              curve: Curves.fastLinearToSlowEaseIn);
                         },
                         indexChecked: _indexChecked,
                         chooseLeftTab: _leftTabs,
@@ -77,7 +94,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                       child: _MenuTextWidget(
                         textList: incomingTextList,
                         animationController: (i) {
-                          _myPageController.animateToPage(i, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+                          _myPageController.animateToPage(i,
+                              duration: Duration(seconds: 2),
+                              curve: Curves.fastLinearToSlowEaseIn);
                         },
                         indexChecked: _indexChecked,
                         chooseLeftTab: _leftTabs,
@@ -116,20 +135,43 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                 Row(
                   children: [
                     _leftTabs == 0
-                        ? Text("African Coffees", style: mainTheme.textTheme.headline4)
+                        ? Text("African Coffees",
+                            style: mainTheme.textTheme.headline4)
                         : _leftTabs == 1
-                            ? Text("American Coffees", style: mainTheme.textTheme.headline4)
+                            ? Text("American Coffees",
+                                style: mainTheme.textTheme.headline4)
                             : _leftTabs == 2
-                                ? Text("Blend", style: mainTheme.textTheme.headline4)
+                                ? Text("Blend",
+                                    style: mainTheme.textTheme.headline4)
                                 : _leftTabs == 3
-                                    ? Text("Options Page", style: mainTheme.textTheme.headline4)
+                                    ? Text("Options Page",
+                                        style: mainTheme.textTheme.headline4)
                                     : null,
                     Spacer(),
-                    IconButton(
-                      splashRadius: 20,
-                      onPressed: () {},
-                      iconSize: context.iconSmall,
-                      icon: Icon(Icons.shopping_basket),
+                    Stack(
+                      children: [
+                        IconButton(
+                          splashRadius: 20,
+                          onPressed: () {
+                            Get.to(CartPage());
+                          },
+                          iconSize: context.iconSmall,
+                          icon: Icon(
+                            Icons.shopping_cart_outlined,
+                            color: mainTheme.primaryColorDark,
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Colors.red,
+                          child: GetX<BasketController>(
+                            builder: (_) => Text(
+                              "${basketController.addBasket}",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -141,12 +183,17 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                     physics: NeverScrollableScrollPhysics(),
                     children: _leftTabs == 3
 
-                        ///i "just" can see "TEXT Page" text in Enable Widget Select Mode? :/
-                        ? [Text("Options Page", style: mainTheme.textTheme.headline4)]
+                        ///i "just" can see "Options Page" text in Enable Widget Select Mode? :/
+                        ? [
+                            Text("Options Page",
+                                style: mainTheme.textTheme.headline4)
+                          ]
                         : coffeesType
                             .map((everyItems) => PageView(
                                   scrollDirection: Axis.horizontal,
-                                  children: everyItems.map<Widget>((e) => ProductWidget(e)).toList(),
+                                  children: everyItems
+                                      .map<Widget>((e) => ProductWidget(e))
+                                      .toList(),
                                 ))
                             .toList(),
                   ),
@@ -197,7 +244,10 @@ class _MenuTextWidget extends StatelessWidget {
           indexChecked(i);
           animationController(i);
         },
-        child: Text(textList[i], style: chooseLeftTab == i ? mainTheme.textTheme.headline2 : mainTheme.textTheme.button),
+        child: Text(textList[i],
+            style: chooseLeftTab == i
+                ? mainTheme.textTheme.headline2
+                : mainTheme.textTheme.button),
       ),
     );
   }

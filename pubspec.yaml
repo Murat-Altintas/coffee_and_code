@@ -31,6 +31,8 @@ dependencies:
   animated_splash_screen: ^1.0.1+2
   lottie: ^0.7.0+1
   flutter_svg: ^0.19.1
+  expandable: ^4.1.4
+
 
   get: any
   graphx: any

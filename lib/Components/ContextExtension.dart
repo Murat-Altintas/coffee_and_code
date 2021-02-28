@@ -4,7 +4,7 @@ extension MediaQueryExtension on BuildContext {
   double get height2 => mq.size.height / 100;
   double get width2 => mq.size.width / 100;
 
-  double get lowestText => height2 * 1.7;
+  double get smallestText => height2 * 1.7;
 
   double get smallText => height2 * 2;
 
