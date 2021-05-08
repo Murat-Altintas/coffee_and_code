@@ -26,7 +26,7 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      //resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Column(
           children: [

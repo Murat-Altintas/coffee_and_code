@@ -2,6 +2,7 @@ import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/material.dart';
 import 'package:graphx/graphx.dart';
 
+/*
 class CoffeeDescriptionScene extends Sprite {
   CoffeesClass coffeeData;
 
@@ -10,21 +11,23 @@ class CoffeeDescriptionScene extends Sprite {
     //graphics.beginFill(Colors.green.value).drawCircle(10, 10, 10).endFill();
   }
 
-  StaticText title;
+  GText title;
 
   Future<void> _initUI() async {
-    title = StaticText(
+    title = GText(
 
       text: coffeeData.name,
-      textStyle: StaticText.getStyle(
+      textStyle: GText.getStyle(
 
         color: Colors.white,
         fontSize: 22,
         fontFamily: "Lora",
       ),
     );
-    addChild(title);
+    Gchild(title);
     title.x = 100;
     title.tween(duration: 3, x: 20);
   }
 }
+
+*/

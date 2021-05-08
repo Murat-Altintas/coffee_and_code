@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:graphx/graphx.dart';
 
+/*
 class CoffeeItemScene extends Sprite {
   String imageUrl = "assets/images/espresso_roast_vintage_2.png";
 
@@ -16,6 +17,7 @@ class CoffeeItemScene extends Sprite {
     // product = _ProductPlayful();
     product = _ProductSerious();
     product.loadImage(imageUrl);
+    addedToStage()
     addChild(product);
   }
 }
@@ -88,3 +90,5 @@ class _ProductPlayful extends Sprite {
     // shadow.y = shadowY + -ratio * 20;
   }
 }
+
+ */

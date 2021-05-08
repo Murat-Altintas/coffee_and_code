@@ -1,5 +1,5 @@
+import 'BottomSpecs.dart';
 import 'TopSpecs.dart';
-import 'file:///C:/Users/murat/Desktop/coffee_and_code/lib/View/MainScreens/ProductInfo/BottomSpecs.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _ProductInfoPageState extends State<ProductInfoPage> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            TopSpecs(widget.coffeesClass),
+            TopSpecs(widget.coffeesClass, context),
             Positioned(
               top: context.height2 * 69,
               left: context.width2 * 5,

@@ -23,15 +23,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.0
-  dio: ^3.0.10
-  firebase_core: ^0.5.1
-  firebase_auth: ^0.18.2
-  cloud_firestore: ^0.14.2
-  animated_splash_screen: ^1.0.1+2
-  lottie: ^0.7.0+1
-  flutter_svg: ^0.19.1
-  expandable: ^4.1.4
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  firebase_core: ^1.0.2
+  firebase_auth: ^1.0.1
+  cloud_firestore: ^1.0.3
+  animated_splash_screen: ^1.1.0
+  lottie: ^1.0.1
+  flutter_svg: ^0.19.3
+  expandable: ^5.0.1
 
 
   get: any

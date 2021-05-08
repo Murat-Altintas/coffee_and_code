@@ -30,10 +30,13 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      //resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Row(
           children: [
+            SizedBox(
+              width: context.width2 * 1,
+            ),
             Expanded(
               flex: 1,
               child: SizedBox.expand(
@@ -156,11 +159,10 @@ class _menuTextWidget extends StatelessWidget {
 
     return RotatedBox(
       quarterTurns: 3,
-      child: FlatButton(
+      child: InkWell(
         splashColor: mainTheme.primaryColor,
         highlightColor: mainTheme.primaryColor,
-        minWidth: context.width2 * 32,
-        onPressed: () {
+        onTap: () {
           indexChecked(i);
           controller(i);
         },

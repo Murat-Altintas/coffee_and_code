@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
 
+import 'View/LoginScreens/FirstLeftBar.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -49,9 +51,6 @@ class MyApp extends StatelessWidget {
       buttonColor: Color.fromRGBO(84, 54, 62, 1),
       //toggleableActiveColor: Color(0xffe53935),
       secondaryHeaderColor: Colors.red,
-      textSelectionColor: Color(0xffef9a9a),
-      cursorColor: Color(0xff4285f4),
-      textSelectionHandleColor: Color(0xffe57373),
       toggleButtonsTheme: ToggleButtonsThemeData(
           fillColor: Colors.pinkAccent,
           textStyle: TextStyle(

@@ -51,50 +51,43 @@ class _ProductWidgetState extends State<ProductWidget> {
               child: Container(
                 height: context.height2 * 35,
                 // color: Colors.red,
-                child: SceneBuilderWidget(
-                  builder: () => SceneController(
-                    front: CoffeeScene(widget.coffeesClass.imagePath),
-                  ),
-                ),
+                child: Image.asset(widget.coffeesClass.imagePath),
               ),
             ),
             Positioned(
               top: context.height2 * 33,
-              child: SceneBuilderWidget(
-                builder: () => SceneController(
-                  front: CoffeeDescriptionScene(widget.coffeesClass),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: context.width2 * 60,
-                        child: Column(
-                          children: [
-                            Text(
-                              widget.coffeesClass.description,
-                              style: mainTheme.textTheme.bodyText2,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  widget.coffeesClass.price.toString() + "€",
-                                  style: mainTheme.textTheme.bodyText1,
-                                ),
-                                Text(
-                                  widget.coffeesClass.weight.first,
-                                  style: mainTheme.textTheme.bodyText1,
-                                ),
-                                /*
+              //  child: Image.asset(widget.coffeesClass.imagePath),
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: context.width2 * 60,
+                      child: Column(
+                        children: [
+                          Text(
+                            widget.coffeesClass.description,
+                            style: mainTheme.textTheme.bodyText2,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                widget.coffeesClass.price.toString() + "€",
+                                style: mainTheme.textTheme.bodyText1,
+                              ),
+                              Text(
+                                widget.coffeesClass.weight.first,
+                                style: mainTheme.textTheme.bodyText1,
+                              ),
+                              /*
                                 Obx(() => Text(
                                     "${widget.shoppingController.products.fold<int>(0, (previousValue, element) => (previousValue + element.price)).toString()}")),
 
@@ -106,13 +99,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 return Text(value.toString());
                               })
                                */
-                              ],
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

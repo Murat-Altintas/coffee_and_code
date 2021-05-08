@@ -49,7 +49,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final mainTheme = Theme.of(context);
+    //final mainTheme = Theme.of(context);
     _scale = 1.2 - _controller.value;
 
     return GestureDetector(

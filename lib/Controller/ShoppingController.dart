@@ -2,7 +2,7 @@ import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:get/get.dart';
 
 class ShoppingController extends GetxController {
-  var products = List<CoffeesClass>().obs;
+  //var products = List<CoffeesClass>().obs;
 
   @override
   void onInit() {

@@ -10,7 +10,7 @@ import 'package:lottie/lottie.dart';
 import '../SecondLeftBar.dart';
 
 class TopSpecs extends StatefulWidget {
-  TopSpecs(this.coffeesClass);
+  TopSpecs(this.coffeesClass, context);
 
   final CoffeesClass coffeesClass;
 
@@ -24,7 +24,7 @@ class _TopSpecsState extends State<TopSpecs> {
   @override
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
-    String selectedWeight = "test1";
+    int dropDownInt;
 
     return Stack(
       children: <Widget>[
@@ -56,10 +56,8 @@ class _TopSpecsState extends State<TopSpecs> {
                 Stack(
                   children: [
                     IconButton(
-                      
                       splashRadius: 20,
                       onPressed: () {
-
                         //Get.to(ShoppingPage());
                       },
                       iconSize: context.iconSmall,
@@ -114,32 +112,35 @@ class _TopSpecsState extends State<TopSpecs> {
                     children: [
                       Text("WEIGHT",
                           style: mainTheme.primaryTextTheme.headline1),
-                      DropdownButton<String>(
+                      DropdownButton<int>(
                         dropdownColor: mainTheme.primaryColorDark,
+                        value: dropDownInt,
+                        hint: Text("fak"),
                         items: [
                           //for (int i = 0; i < widget.coffeesClass.weight.length; i++)
                           DropdownMenuItem(
-                            child: Text("test1",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: "test1",
+                            child: Text(
+                              "D",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            value: 1,
                           ),
                           DropdownMenuItem(
-                            child: Text("test2",
+                            child: Text("E",
                                 style: mainTheme.primaryTextTheme.headline2),
-                            value: "demo",
+                            value: 7,
                           ),
                           DropdownMenuItem(
-                            child: Text("test3",
+                            child: Text("R",
                                 style: mainTheme.primaryTextTheme.headline2),
-                            value: "dem",
+                            value: 3,
                           ),
                         ],
-                        onChanged: (String selected) {
+                        onChanged: (int selected) {
                           setState(() {
-                            selectedWeight = selected;
+                            dropDownInt = selected;
                           });
                         },
-                        value: selectedWeight,
                       ),
                     ],
                   ),
@@ -151,33 +152,6 @@ class _TopSpecsState extends State<TopSpecs> {
                     children: [
                       Text("PIECE",
                           style: mainTheme.primaryTextTheme.headline1),
-                      DropdownButton<String>(
-                        dropdownColor: mainTheme.primaryColorDark,
-                        items: [
-                          //for (int i = 0; i < widget.coffeesClass.weight.length; i++)
-                          DropdownMenuItem(
-                            child: Text("test1",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: "test1",
-                          ),
-                          DropdownMenuItem(
-                            child: Text("test2",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: "demo",
-                          ),
-                          DropdownMenuItem(
-                            child: Text("test3",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: "dem",
-                          ),
-                        ],
-                        onChanged: (String selected) {
-                          setState(() {
-                            selectedWeight = selected;
-                          });
-                        },
-                        value: selectedWeight,
-                      ),
                     ],
                   ),
                 ],
@@ -192,33 +166,6 @@ class _TopSpecsState extends State<TopSpecs> {
                 height: context.lowContainer,
               ),
               Text("GRINDING", style: mainTheme.primaryTextTheme.headline1),
-              DropdownButton<String>(
-                dropdownColor: mainTheme.primaryColorDark,
-                items: [
-                  //for (int i = 0; i < widget.coffeesClass.weight.length; i++)
-                  DropdownMenuItem(
-                    child: Text("test1",
-                        style: mainTheme.primaryTextTheme.headline2),
-                    value: "test1",
-                  ),
-                  DropdownMenuItem(
-                    child: Text("test2",
-                        style: mainTheme.primaryTextTheme.headline2),
-                    value: "demo",
-                  ),
-                  DropdownMenuItem(
-                    child: Text("test3",
-                        style: mainTheme.primaryTextTheme.headline2),
-                    value: "dem",
-                  ),
-                ],
-                onChanged: (String selected) {
-                  setState(() {
-                    selectedWeight = selected;
-                  });
-                },
-                value: selectedWeight,
-              ),
             ],
           ),
         ),
