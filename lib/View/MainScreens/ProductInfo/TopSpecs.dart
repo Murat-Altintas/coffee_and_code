@@ -11,21 +11,22 @@ import '../SecondLeftBar.dart';
 
 class TopSpecs extends StatefulWidget {
   TopSpecs(this.coffeesClass, context);
-
   final CoffeesClass coffeesClass;
-
   final basketController = Get.put(BasketController());
+  final dropDownBasket = Get.put(DropDownBasket());
 
   @override
   _TopSpecsState createState() => _TopSpecsState();
 }
 
 class _TopSpecsState extends State<TopSpecs> {
+  String dropDownString;
+  int dropDownInt = 1;
+  int pieceValue;
+
   @override
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
-    int dropDownInt;
-
     return Stack(
       children: <Widget>[
         CustomPaint(
@@ -71,7 +72,7 @@ class _TopSpecsState extends State<TopSpecs> {
                       backgroundColor: Colors.red,
                       child: GetX<BasketController>(
                         builder: (_) => Text(
-                          "${widget.basketController.addBasket}",
+                          "${widget.basketController.cartBasket}",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -89,83 +90,55 @@ class _TopSpecsState extends State<TopSpecs> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                  width: context.width2 * 40,
-                  child: Text(widget.coffeesClass.name,
-                      style: mainTheme.textTheme.headline6)),
+              Container(width: context.width2 * 40, child: Text(widget.coffeesClass.name, style: mainTheme.textTheme.headline6)),
               SizedBox(
                 height: context.lowestContainer,
               ),
-              Text("PRICE", style: mainTheme.primaryTextTheme.headline1),
+              Text(widget.dropDownBasket.returnPrice.toString(), style: mainTheme.primaryTextTheme.headline1),
               SizedBox(
                 height: context.height2 * 1.5,
               ),
-              Text(widget.coffeesClass.price.toString() + "€",
-                  style: mainTheme.primaryTextTheme.headline2),
+              Text((widget.coffeesClass.price * dropDownInt).toString() + ("€"), style: mainTheme.primaryTextTheme.headline2),
               SizedBox(
                 height: context.lowContainer,
               ),
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("WEIGHT",
-                          style: mainTheme.primaryTextTheme.headline1),
-                      DropdownButton<int>(
-                        dropdownColor: mainTheme.primaryColorDark,
-                        value: dropDownInt,
-                        hint: Text("fak"),
-                        items: [
-                          //for (int i = 0; i < widget.coffeesClass.weight.length; i++)
-                          DropdownMenuItem(
-                            child: Text(
-                              "D",
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            value: 1,
-                          ),
-                          DropdownMenuItem(
-                            child: Text("E",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: 7,
-                          ),
-                          DropdownMenuItem(
-                            child: Text("R",
-                                style: mainTheme.primaryTextTheme.headline2),
-                            value: 3,
-                          ),
-                        ],
-                        onChanged: (int selected) {
-                          setState(() {
-                            dropDownInt = selected;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: context.lowestContainer,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("PIECE",
-                          style: mainTheme.primaryTextTheme.headline1),
-                    ],
-                  ),
-                ],
+              Text("PIECE", style: mainTheme.primaryTextTheme.headline1),
+              DropdownButton<int>(
+                dropdownColor: mainTheme.primaryColorDark,
+                value: dropDownInt,
+                items: widget.coffeesClass.piece.map((int e) {
+                  return DropdownMenuItem(
+                    child: Text(e.toString(), style: mainTheme.primaryTextTheme.headline2),
+                    value: e,
+                  );
+                }).toList(),
+                onChanged: (int selected) {
+                  setState(() {
+                    DropDownBasket().returnNewPrice(dropDownInt);
+                    dropDownInt = selected;
+                  });
+                },
               ),
-              /*
-              Text(widget.coffeesClass.weight.toString(),
-                  style: mainTheme.primaryTextTheme.headline2),
-              
-              */
-
               SizedBox(
                 height: context.lowContainer,
               ),
               Text("GRINDING", style: mainTheme.primaryTextTheme.headline1),
+              DropdownButton<String>(
+                dropdownColor: mainTheme.primaryColorDark,
+                hint: Text("Choose", style: mainTheme.primaryTextTheme.headline2),
+                value: dropDownString,
+                items: widget.coffeesClass.grinding.map((String e) {
+                  return DropdownMenuItem(
+                    child: Text(e, style: mainTheme.primaryTextTheme.headline2),
+                    value: e,
+                  );
+                }).toList(),
+                onChanged: (String selected) {
+                  setState(() {
+                    dropDownString = selected;
+                  });
+                },
+              )
             ],
           ),
         ),
@@ -196,3 +169,12 @@ class _TopSpecsState extends State<TopSpecs> {
     );
   }
 }
+
+/*
+ items: widget.coffeesClass.weight.map((e) {
+                  return DropdownMenuItem(
+                    child: Text(e, style: mainTheme.primaryTextTheme.headline2),
+                    value: e,
+                  );
+                }).toList(),
+ */

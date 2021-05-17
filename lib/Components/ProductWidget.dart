@@ -5,15 +5,12 @@ import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/ProductInfo/ProductInfoPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graphx/graphx.dart';
 import 'ContextExtension.dart';
 import 'package:get/get.dart';
 
 class ProductWidget extends StatefulWidget {
   ProductWidget(this.coffeesClass);
-
   final CoffeesClass coffeesClass;
-
   final shoppingController = Get.put(ShoppingController());
 
   @override

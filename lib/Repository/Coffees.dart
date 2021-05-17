@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class CoffeesClass {
   final List<String> weight, grinding;
+  final List<int> piece;
   final String name, imagePath, description, aroma, brewing, height, variety;
-  final int price, piece;
+  final int price;
   final List<Color> gradient;
   final Color bgColor;
 
@@ -39,7 +40,7 @@ List<CoffeesClass> singleOrigin = <CoffeesClass>[
     weight: ["250gr", "500gr", "1kg"],
     price: 35,
     height: "1700-200M",
-    piece: 1,
+    piece: [1,2,3,4,5,6,7,8,9,10],
     brewing: "Espresso, V60, Filter",
     aroma: "Chocolate, Brown Sugar and Dried Fruit Notes",
     variety: "Doairri",
@@ -55,7 +56,7 @@ List<CoffeesClass> singleOrigin = <CoffeesClass>[
     weight: ["250gr", "500gr", "1kg"],
     price: 35,
     height: "1700-200M",
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     brewing: "Espresso, V60, Filter",
     aroma: "Fruits, Sugar and Dried Fruit Notes",
     variety: "Doairri",
@@ -74,7 +75,7 @@ List<CoffeesClass> singleOrigin = <CoffeesClass>[
     weight: ["250gr", "500gr", "1kg"],
     price: 35,
     height: "1700-200M",
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     brewing: "Espresso, V60, Filter",
     aroma: "White Chocolate and Hazelnut Notes",
     variety: "Doairri",
@@ -96,7 +97,7 @@ List<CoffeesClass> singleServe = <CoffeesClass>[
     weight: ["250gr", "500gr", "1kg"],
     price: 35,
     height: "1700-200M",
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     brewing: "Espresso, V60, Filter",
     aroma: "Caramel and Fruits Notes",
     variety: "Doairri",
@@ -110,7 +111,7 @@ List<CoffeesClass> singleServe = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/brasil.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     brewing: "Espresso, V60, Filter",
     price: 35,
     height: "1700-200M",
@@ -129,7 +130,7 @@ List<CoffeesClass> singleServe = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/costarica.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     price: 35,
     height: "1700-200M",
     brewing: "Espresso, V60, Filter",
@@ -151,7 +152,7 @@ List<CoffeesClass> blendCoffees = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/christmas_blend.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     price: 35,
     height: "1700-200M",
     brewing: "Espresso, V60, Filter",
@@ -170,7 +171,7 @@ List<CoffeesClass> blendCoffees = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/christmas_decaf.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     price: 35,
     height: "1700-200M",
     brewing: "Espresso, V60, Filter",
@@ -186,7 +187,7 @@ List<CoffeesClass> blendCoffees = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/espresso_roast_vintage.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     price: 35,
     height: "1700-200M",
     brewing: "Espresso, V60, Filter",
@@ -205,7 +206,7 @@ List<CoffeesClass> blendCoffees = <CoffeesClass>[
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
     imagePath: "assets/images/holiday_blend.png",
     weight: ["250gr", "500gr", "1kg"],
-    piece: 1,
+     piece: [1,2,3,4,5,6,7,8,9,10],
     price: 35,
     height: "1700-200M",
     brewing: "Espresso, V60, Filter",

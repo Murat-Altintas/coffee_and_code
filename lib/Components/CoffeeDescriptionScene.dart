@@ -1,6 +1,5 @@
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/material.dart';
-import 'package:graphx/graphx.dart';
 
 /*
 class CoffeeDescriptionScene extends Sprite {

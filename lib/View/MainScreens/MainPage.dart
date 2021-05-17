@@ -166,7 +166,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                           backgroundColor: Colors.red,
                           child: GetX<BasketController>(
                             builder: (_) => Text(
-                              "${basketController.addBasket}",
+                              "${basketController.cartBasket}",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

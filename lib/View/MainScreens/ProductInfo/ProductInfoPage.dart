@@ -8,7 +8,6 @@ import 'package:flutter/rendering.dart';
 
 class ProductInfoPage extends StatefulWidget {
   final CoffeesClass coffeesClass;
-
   ProductInfoPage(this.coffeesClass);
 
   @override
