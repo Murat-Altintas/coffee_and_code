@@ -11,9 +11,10 @@ import '../SecondLeftBar.dart';
 
 class TopSpecs extends StatefulWidget {
   TopSpecs(this.coffeesClass, context);
+
   final CoffeesClass coffeesClass;
   final basketController = Get.put(BasketController());
-  final dropDownBasket = Get.put(DropDownBasket());
+  final totalPiece = Get.put(TotalPiece());
 
   @override
   _TopSpecsState createState() => _TopSpecsState();
@@ -22,7 +23,6 @@ class TopSpecs extends StatefulWidget {
 class _TopSpecsState extends State<TopSpecs> {
   String dropDownString;
   int dropDownInt = 1;
-  int pieceValue;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +70,18 @@ class _TopSpecsState extends State<TopSpecs> {
                     CircleAvatar(
                       radius: 10,
                       backgroundColor: Colors.red,
-                      child: GetX<BasketController>(
+                      /*
+                      GetX<BasketController>(
                         builder: (_) => Text(
                           "${widget.basketController.cartBasket}",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                       */
+
+                      child: GetX<TotalPiece>(
+                        builder: (_) => Text(
+                          widget.totalPiece.totalPiece.toString(),
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -94,7 +103,8 @@ class _TopSpecsState extends State<TopSpecs> {
               SizedBox(
                 height: context.lowestContainer,
               ),
-              Text(widget.dropDownBasket.returnPrice.toString(), style: mainTheme.primaryTextTheme.headline1),
+              //widget.totalCoffeePiece.returnNewPrice(widget.coffeesClass.price, dropDownInt).toString() + "€"
+              Text("PRICE", style: mainTheme.primaryTextTheme.headline1),
               SizedBox(
                 height: context.height2 * 1.5,
               ),
@@ -112,16 +122,16 @@ class _TopSpecsState extends State<TopSpecs> {
                     value: e,
                   );
                 }).toList(),
-                onChanged: (int selected) {
+                onChanged: (int dropDownSelect) {
                   setState(() {
-                    DropDownBasket().returnNewPrice(dropDownInt);
-                    dropDownInt = selected;
+                    dropDownInt = dropDownSelect;
                   });
                 },
               ),
               SizedBox(
                 height: context.lowContainer,
               ),
+              //widget.selectedGrinding.returnNewGrinding(dropDownString)
               Text("GRINDING", style: mainTheme.primaryTextTheme.headline1),
               DropdownButton<String>(
                 dropdownColor: mainTheme.primaryColorDark,
@@ -160,7 +170,7 @@ class _TopSpecsState extends State<TopSpecs> {
                 "assets/lottie/add_to_cart.json",
               ),
               onTap: () {
-                widget.basketController.plusBasket();
+                widget.totalPiece.plusPiece(dropDownInt);
               },
               height: context.height2 * 7,
               width: context.width2 * 14),

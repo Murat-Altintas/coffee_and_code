@@ -26,15 +26,32 @@ class BasketController extends GetxController {
   }
 }
 
-class DropDownBasket extends GetxController {
-  var price = 0.obs;
-  //var _priceList = List.filled(0, 0).obs;
-  get returnPrice => price.value;
+class TotalPiece extends GetxController{
+  var totalPiece = 0.obs;
 
-  //set returnNewPrice(newPrice) => price.value = newPrice;
+  plusPiece(piece) {
+    return totalPiece + piece;
+  }
 
-  returnNewPrice(int dropDownInt) {
-    int newPrice;
-    return price.value = newPrice;
+  void minusPiece() {
+    totalPiece--;
+    update();
   }
 }
+
+class TotalCoffeePiece{
+  //var _priceList = List.filled(0, 0).obs;
+
+  returnNewPrice(int price, int piece) {
+    return price * piece;
+  }
+}
+
+class SelectedGrinding{
+  //var _priceList = List.filled(0, 0).obs;
+
+  returnNewGrinding(String newGrinding) {
+    return newGrinding;
+  }
+}
+
