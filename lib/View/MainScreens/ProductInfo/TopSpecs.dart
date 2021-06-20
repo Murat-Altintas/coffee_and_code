@@ -2,6 +2,7 @@ import 'package:coffee_and_code/Components/Buttons.dart';
 import 'package:coffee_and_code/Components/ProductBackShape.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
+import 'package:coffee_and_code/View/MainScreens/CartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
@@ -15,6 +16,7 @@ class TopSpecs extends StatefulWidget {
   final CoffeesClass coffeesClass;
   final basketController = Get.put(BasketController());
   final totalPiece = Get.put(TotalPiece());
+  final shoppingController = Get.put(ShoppingController());
 
   @override
   _TopSpecsState createState() => _TopSpecsState();
@@ -59,7 +61,7 @@ class _TopSpecsState extends State<TopSpecs> {
                     IconButton(
                       splashRadius: 20,
                       onPressed: () {
-                        //Get.to(ShoppingPage());
+                        Get.to(CartPage());
                       },
                       iconSize: context.iconSmall,
                       icon: Icon(
@@ -99,7 +101,10 @@ class _TopSpecsState extends State<TopSpecs> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(width: context.width2 * 40, child: Text(widget.coffeesClass.name, style: mainTheme.textTheme.headline6)),
+              Container(
+                width: context.width2 * 40,
+                child: Text(widget.coffeesClass.name, style: mainTheme.textTheme.headline6),
+              ),
               SizedBox(
                 height: context.lowestContainer,
               ),
@@ -171,6 +176,7 @@ class _TopSpecsState extends State<TopSpecs> {
               ),
               onTap: () {
                 widget.totalPiece.plusPiece(dropDownInt);
+                widget.shoppingController.addProduct(widget.coffeesClass,dropDownInt);
               },
               height: context.height2 * 7,
               width: context.width2 * 14),

@@ -1,8 +1,10 @@
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/material.dart';
-
+//import 'package:graphx/graphx.dart';
 /*
-class CoffeeDescriptionScene extends Sprite {
+
+
+class CoffeeDescriptionScene extends GSprite {
   CoffeesClass coffeeData;
 
   CoffeeDescriptionScene(this.coffeeData) {
@@ -16,8 +18,7 @@ class CoffeeDescriptionScene extends Sprite {
     title = GText(
 
       text: coffeeData.name,
-      textStyle: GText.getStyle(
-
+      textStyle: Text.rich(
         color: Colors.white,
         fontSize: 22,
         fontFamily: "Lora",
@@ -28,5 +29,4 @@ class CoffeeDescriptionScene extends Sprite {
     title.tween(duration: 3, x: 20);
   }
 }
-
 */

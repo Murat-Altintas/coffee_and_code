@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+//import 'package:graphx/graphx.dart';
 
 /*
-class CoffeeScene extends Sprite {
-  Bitmap image;
+
+
+class CoffeeScene extends GSprite {
+  GBitmap image;
   String url;
 
   CoffeeScene(this.url) {
@@ -33,4 +36,5 @@ class CoffeeScene extends Sprite {
     image.tween(duration: 3, alpha: 1, scale: targetScale, ease: GEase.elasticOut);
   }
 }
-*/
+
+ */

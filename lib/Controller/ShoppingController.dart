@@ -3,12 +3,11 @@ import 'package:coffee_and_code/View/MainScreens/ProductInfo/TopSpecs.dart';
 import 'package:get/get.dart';
 
 class ShoppingController extends GetxController {
-  var products = <CoffeesClass>[].obs;
+  var products = <CoffeesClass,int>{}.obs;
+  bool isExpanded = false;
 
-  @override
-  void onInit() {
-    super.onInit();
-    CoffeesClass();
+  void addProduct(CoffeesClass item,int piece){
+    products[item] = piece;
   }
 }
 

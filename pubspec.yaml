@@ -25,16 +25,17 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.3
   dio: ^4.0.0
-  firebase_core: ^1.1.1
-  firebase_auth: ^1.1.4
-  cloud_firestore: ^2.1.0
+  firebase_core: ^1.2.0
+  firebase_auth: ^1.2.0
+  cloud_firestore: ^2.2.0
   animated_splash_screen: ^1.1.0
   lottie: ^1.0.1
   flutter_svg: ^0.22.0
   expandable: ^5.0.1
+  flutter_slidable: ^0.6.0
 
   get: any
-  #graphx: any
+  #graphx: ^0.9.10
 
 dev_dependencies:
   flutter_test:
