@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 class ProductWidget extends StatefulWidget {
   ProductWidget(this.coffeesClass);
+
   final CoffeesClass coffeesClass;
   final shoppingController = Get.put(ShoppingController());
 
@@ -44,7 +45,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ))),
             ),
             Positioned(
-              left: context.width2 * 35,
+              left: context.width2 * 20,
               child: Container(
                 height: context.height2 * 35,
                 // color: Colors.red,
@@ -59,8 +60,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      widget.coffeesClass.name,
+                      style: mainTheme.textTheme.bodyText1,
+                    ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Container(
                       width: context.width2 * 60,

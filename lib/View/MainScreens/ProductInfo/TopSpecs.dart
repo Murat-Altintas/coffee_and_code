@@ -17,6 +17,8 @@ class TopSpecs extends StatefulWidget {
   final basketController = Get.put(BasketController());
   final totalPiece = Get.put(TotalPiece());
   final shoppingController = Get.put(ShoppingController());
+  final selectedProductColor = Get.put(SelectedProductColor());
+  final selectedGrinding = Get.put(SelectedGrinding());
 
   @override
   _TopSpecsState createState() => _TopSpecsState();
@@ -78,7 +80,7 @@ class _TopSpecsState extends State<TopSpecs> {
                           "${widget.basketController.cartBasket}",
                           style: TextStyle(color: Colors.white),
                         ),
-                      )
+                      ),
                        */
 
                       child: GetX<TotalPiece>(
@@ -103,7 +105,8 @@ class _TopSpecsState extends State<TopSpecs> {
             children: [
               Container(
                 width: context.width2 * 40,
-                child: Text(widget.coffeesClass.name, style: mainTheme.textTheme.headline6),
+                child: Text(widget.coffeesClass.name,
+                    style: mainTheme.textTheme.headline6),
               ),
               SizedBox(
                 height: context.lowestContainer,
@@ -113,7 +116,8 @@ class _TopSpecsState extends State<TopSpecs> {
               SizedBox(
                 height: context.height2 * 1.5,
               ),
-              Text((widget.coffeesClass.price * dropDownInt).toString() + ("€"), style: mainTheme.primaryTextTheme.headline2),
+              Text((widget.coffeesClass.price * dropDownInt).toString() + ("€"),
+                  style: mainTheme.primaryTextTheme.headline2),
               SizedBox(
                 height: context.lowContainer,
               ),
@@ -123,7 +127,8 @@ class _TopSpecsState extends State<TopSpecs> {
                 value: dropDownInt,
                 items: widget.coffeesClass.piece.map((int e) {
                   return DropdownMenuItem(
-                    child: Text(e.toString(), style: mainTheme.primaryTextTheme.headline2),
+                    child: Text(e.toString(),
+                        style: mainTheme.primaryTextTheme.headline2),
                     value: e,
                   );
                 }).toList(),
@@ -136,11 +141,12 @@ class _TopSpecsState extends State<TopSpecs> {
               SizedBox(
                 height: context.lowContainer,
               ),
-              //widget.selectedGrinding.returnNewGrinding(dropDownString)
-              Text("GRINDING", style: mainTheme.primaryTextTheme.headline1),
+              Text("GRIND", style: mainTheme.primaryTextTheme.headline1),
+
               DropdownButton<String>(
                 dropdownColor: mainTheme.primaryColorDark,
-                hint: Text("Choose", style: mainTheme.primaryTextTheme.headline2),
+                hint:
+                    Text("Choose", style: mainTheme.primaryTextTheme.headline2),
                 value: dropDownString,
                 items: widget.coffeesClass.grinding.map((String e) {
                   return DropdownMenuItem(
@@ -151,6 +157,7 @@ class _TopSpecsState extends State<TopSpecs> {
                 onChanged: (String selected) {
                   setState(() {
                     dropDownString = selected;
+                    //widget.selectedGrinding.newGrinding.value = dropDownString;
                   });
                 },
               )
@@ -175,8 +182,17 @@ class _TopSpecsState extends State<TopSpecs> {
                 "assets/lottie/add_to_cart.json",
               ),
               onTap: () {
+                if (dropDownString == null) {
+                  //AlertDialogClass().alertDialog(context, "Complete");
+                }
+                if (dropDownString != null) {
+                  widget.selectedGrinding.grindList.add(dropDownString);
+                }
                 widget.totalPiece.plusPiece(dropDownInt);
-                widget.shoppingController.addProduct(widget.coffeesClass,dropDownInt);
+               // widget.shoppingController.grindMap.addAll({"widget.coffeesClass.grinding" : dropDownInt});
+                widget.shoppingController.addProduct(widget.coffeesClass, dropDownInt, dropDownString);
+                widget.selectedProductColor
+                    .returnColor(widget.coffeesClass.bgColor);
               },
               height: context.height2 * 7,
               width: context.width2 * 14),
