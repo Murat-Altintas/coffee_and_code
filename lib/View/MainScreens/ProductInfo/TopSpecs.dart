@@ -14,11 +14,8 @@ class TopSpecs extends StatefulWidget {
   TopSpecs(this.coffeesClass, context);
 
   final CoffeesClass coffeesClass;
-  final basketController = Get.put(BasketController());
-  final totalPiece = Get.put(TotalPiece());
+  final totalPiece = Get.put(PieceController());
   final shoppingController = Get.put(ShoppingController());
-  final selectedProductColor = Get.put(SelectedProductColor());
-  final selectedGrinding = Get.put(SelectedGrinding());
 
   @override
   _TopSpecsState createState() => _TopSpecsState();
@@ -27,6 +24,7 @@ class TopSpecs extends StatefulWidget {
 class _TopSpecsState extends State<TopSpecs> {
   String dropDownString;
   int dropDownInt = 1;
+  AnimationController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +81,7 @@ class _TopSpecsState extends State<TopSpecs> {
                       ),
                        */
 
-                      child: GetX<TotalPiece>(
+                      child: GetX<PieceController>(
                         builder: (_) => Text(
                           widget.totalPiece.totalPiece.toString(),
                           style: TextStyle(color: Colors.white),
@@ -111,7 +109,7 @@ class _TopSpecsState extends State<TopSpecs> {
               SizedBox(
                 height: context.lowestContainer,
               ),
-              //widget.totalCoffeePiece.returnNewPrice(widget.coffeesClass.price, dropDownInt).toString() + "€"
+              //widget.TotalCoffeePrice.returnNewPrice(widget.coffeesClass.price, dropDownInt).toString() + "€"
               Text("PRICE", style: mainTheme.primaryTextTheme.headline1),
               SizedBox(
                 height: context.height2 * 1.5,
@@ -179,20 +177,15 @@ class _TopSpecsState extends State<TopSpecs> {
               buttonColor: mainTheme.primaryColorDark,
               buttonShadowColor: mainTheme.primaryColorDark,
               child: Lottie.asset(
-                "assets/lottie/add_to_cart.json",
-              ),
+                  "assets/lottie/add_to_cart.json",
+                  controller: _controller, onLoaded: (composition) {}),
               onTap: () {
-                if (dropDownString == null) {
-                  //AlertDialogClass().alertDialog(context, "Complete");
-                }
-                if (dropDownString != null) {
-                  widget.selectedGrinding.grindList.add(dropDownString);
-                }
-                widget.totalPiece.plusPiece(dropDownInt);
-               // widget.shoppingController.grindMap.addAll({"widget.coffeesClass.grinding" : dropDownInt});
-                widget.shoppingController.addProduct(widget.coffeesClass, dropDownInt, dropDownString);
-                widget.selectedProductColor
-                    .returnColor(widget.coffeesClass.bgColor);
+                widget.totalPiece.increaseCartPiece(dropDownInt);
+                widget.shoppingController.addProduct(
+                    widget.coffeesClass,
+                    dropDownInt,
+                    widget.coffeesClass.price * dropDownInt,
+                    dropDownString);
               },
               height: context.height2 * 7,
               width: context.width2 * 14),

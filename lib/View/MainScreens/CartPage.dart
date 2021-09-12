@@ -1,17 +1,25 @@
+import 'dart:ui';
+
+import 'package:coffee_and_code/Components/Buttons.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
+import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
 
 class CartPage extends StatefulWidget {
-  final selectedProductColor = Get.put(SelectedProductColor());
-  final totalPrice = Get.put(TotalCoffeePiece());
-  final selectGrind = Get.put(ShoppingController());
+  final newProductPiece = Get.put(ShoppingController());
+  final totalPiece = Get.put(PieceController());
+
+  final CoffeesClass coffeesClass;
+
+  CartPage({Key key, this.coffeesClass}) : super(key: key);
 
   @override
   State createState() {
@@ -20,12 +28,12 @@ class CartPage extends StatefulWidget {
 }
 
 class CartPageState extends State<CartPage> {
+  int plusPiece = 1;
+
   @override
   Widget build(BuildContext context) {
     final shoppingController = Get.put(ShoppingController());
-
     final mainTheme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -44,13 +52,13 @@ class CartPageState extends State<CartPage> {
             children: shoppingController.products
                 .map(
                   (id, element) => MapEntry(
-                    id,
-                    Card(
-                      margin: EdgeInsets.all(20),
-                      color: Colors.white,
-                      elevation: 5,
-                      child: ExpandableNotifier(
-                          child: ScrollOnExpand(
+                id,
+                Card(
+                  margin: EdgeInsets.all(20),
+                  color: Colors.white,
+                  elevation: 5,
+                  child: ExpandableNotifier(
+                      child: ScrollOnExpand(
                         child: Padding(
                           padding: context.paddingMedium,
                           child: Column(
@@ -61,28 +69,15 @@ class CartPageState extends State<CartPage> {
                               ),
                               Expandable(
                                 collapsed: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey,
-                                            spreadRadius: 5,
-                                            blurRadius: 5,
-                                            offset: Offset(10, 50)),
-                                      ],
-                                      borderRadius: BorderRadius.circular(10)),
-                                  height: context.height2 * 20,
+                                  height: context.height2 * 22,
                                   width: context.width2 * 100,
                                   child: Column(
                                     children: [
-                                      SizedBox(
-                                        height: context.height2 * 1.5,
-                                      ),
                                       Row(
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                              color: Colors.lightBlueAccent,
+                                              color: element.coffee.bgColor,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),
@@ -98,61 +93,185 @@ class CartPageState extends State<CartPage> {
                                           SizedBox(
                                             width: context.width2 * 5,
                                           ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                          Row(
                                             children: [
-                                              Text(
-                                                element.coffee.name,
-                                                style:
-                                                    mainTheme.textTheme.subtitle1,
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    width: context.width2 * 25,
+                                                    child: Text(
+                                                      element.coffee.name,
+                                                      style: mainTheme
+                                                          .textTheme.subtitle1,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    element.grind,
+                                                    style: mainTheme
+                                                        .textTheme.headline3,
+                                                  ),
+                                                  SizedBox(
+                                                    height:
+                                                        context.lowestContainer,
+                                                  ),
+                                                  Text(
+                                                    element.price.toString() +
+                                                        "€",
+                                                    style: mainTheme
+                                                        .textTheme.headline5,
+                                                  ),
+                                                ],
                                               ),
-
-                                              Text(
-                                                element.grind,
-                                                style:
-                                                mainTheme.textTheme.subtitle1,
+                                              SizedBox(
+                                                width: context.lowestContainer,
                                               ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Button(
+                                                    width: context.lowContainer,
+                                                    height:
+                                                        context.lowContainer,
+                                                    buttonColor: mainTheme
+                                                        .primaryColorLight,
+                                                    buttonShadowColor: mainTheme
+                                                        .primaryColorLight,
+                                                    child: Text(
+                                                      "+",
+                                                      style: mainTheme
+                                                          .textTheme.subtitle1,
+                                                    ),
+                                                    onTap: () {
+                                                      // widget.newProductPiece;
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: context.height2 * 1,
+                                                  ),
+                                                  /*
+                                                  GetX(
+                                                    builder: (_) => Text(
+                                                      widget.newProductPiece
+                                                          .cartCount
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                  */
+                                                  element.count < 0
+                                                      ? Text(
+                                                          "0",
+                                                          style: mainTheme
+                                                              .textTheme
+                                                              .headline4,
+                                                        )
+                                                      : Text(
+                                                          element.count
+                                                              .toString(),
+                                                          style: mainTheme
+                                                              .textTheme
+                                                              .headline4,
+                                                        ),
+                                                  SizedBox(
+                                                    height: context.height2 * 1,
+                                                  ),
+                                                  Button(
+                                                    width: context.lowContainer,
+                                                    height:
+                                                        context.lowContainer,
+                                                    buttonColor: mainTheme
+                                                        .primaryColorLight,
+                                                    buttonShadowColor: mainTheme
+                                                        .primaryColorLight,
+                                                    child: Text(
+                                                      "-",
+                                                      style: mainTheme
+                                                          .textTheme.subtitle1,
+                                                    ),
+                                                    onTap: () {
+                                                      setState(() {
+                                                        shoppingController
+                                                            .products[element
+                                                                .coffee.id]
+                                                            .count = element
+                                                                .count -
+                                                            1;
+                                                        if (widget
+                                                                .totalPiece
+                                                                .totalPiece
+                                                                .value !=
+                                                            0) {
+                                                          widget.totalPiece
+                                                              .increaseCartPiece(
+                                                                  -1);
+                                                        }
+                                                      });
 
+                                                      //widget.productCount.minusBasket();
+                                                    },
+                                                  ),
+                                                ],
+                                              )
                                             ],
-                                          ),
+                                          )
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
-                                expanded: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey,
-                                            spreadRadius: 5,
-                                            blurRadius: 5,
-                                            offset: Offset(10, 50)),
-                                      ],
-                                      borderRadius: BorderRadius.circular(10)),
-                                  height: context.height2 * 10,
-                                  width: context.width2 * 100,
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: context.height2 * 1.5,
-                                      ),
-                                      Padding(
-                                        padding: context.paddingMedium,
-                                        child: Column(
+                                expanded: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              element.grind,
+                                              element.coffee.name,
                                               style:
                                                   mainTheme.textTheme.subtitle1,
                                             ),
+                                            Text(
+                                              element.grind,
+                                              style:
+                                                  mainTheme.textTheme.headline3,
+                                            ),
                                           ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            element.count < 0
+                                                ? Text(
+                                              "0",
+                                              style: mainTheme
+                                                  .textTheme
+                                                  .headline4,
+                                            )
+                                                : Text(
+                                              element.count
+                                                  .toString(),
+                                              style: mainTheme
+                                                  .textTheme
+                                                  .headline4,
+                                            ),
+                                            Text(
+                                              element.price.toString() + "€",
+                                              style:
+                                                  mainTheme.textTheme.headline5,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                               Row(
@@ -160,7 +279,7 @@ class CartPageState extends State<CartPage> {
                                   Builder(
                                     builder: (context) {
                                       var controller =
-                                          ExpandableController.of(context);
+                                      ExpandableController.of(context);
                                       return TextButton(
                                         child: Text(
                                           controller.expanded
@@ -187,6 +306,10 @@ class CartPageState extends State<CartPage> {
                 .toList()),
       ),
     );
+  }
+
+  Row LeftInfo(CartItem element, ThemeData mainTheme, BuildContext context) {
+    // return ;
   }
 }
 

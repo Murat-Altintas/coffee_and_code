@@ -1,81 +1,56 @@
+import 'dart:convert';
+
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/MainPage.dart';
 import 'package:coffee_and_code/View/MainScreens/ProductInfo/TopSpecs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class ShoppingController extends GetxController {
-  var products = <String, CartItem>{}.obs;
- // var grindMap = {};
-
-
-  void addProduct(CoffeesClass item, int piece,String grind ) {
-      products[item.id] = CartItem(item, piece, grind);
-  }
-}
-
 class CartItem {
   CoffeesClass coffee;
-  int count;
+  int count, price;
   String grind;
-  CartItem(this.coffee,this.count,this.grind);
 
-}
-class BasketController extends GetxController {
-  var cartBasket = 0.obs;
-
-  void plusBasket() {
-    cartBasket++;
-    update();
-  }
-
-  void minusBasket() {
-    cartBasket--;
-    update();
-  }
+  CartItem({this.coffee, this.count, this.price, this.grind});
 }
 
-class TotalPiece extends GetxController {
+class ShoppingController extends GetxController {
+  var products = <String, CartItem>{}.obs;
+
+  addProduct(CoffeesClass item, int piece, price, String grind) {
+    products[item.id] =
+        CartItem(coffee: item, count: piece, price: price, grind: grind);
+  }
+
+/*
+  plusProduct(newCount) {
+    return cartCount + newCount;
+  }
+   */
+
+}
+
+class PieceController extends GetxController {
   var totalPiece = 0.obs;
 
-  plusPiece(piece) {
+  increaseCartPiece(piece) {
     return totalPiece + piece;
   }
 
-  void minusPiece() {
-    totalPiece--;
-    update();
+  increaseProductPiece(products, coffee) {
+    var _products = products.obs;
+
+    products[coffee.coffee.id].count = coffee.count +1;
+
+    return _products;
   }
 }
 
-class TotalCoffeePiece extends GetxController {
-  //var _priceList = List.filled(0, 0).obs;
+class TotalCoffeePrice {
   var newPrice = 0;
 
-  returnNewPrice({int price, int piece})  {
-    //"[] and {} optional"
+  returnNewPrice({int price, int piece}) {
+    //"[] and {} for optional choice"
     return newPrice = price * piece;
-  }
-}
-
-class SelectedProductColor {
-  List<Color> colorList = [];
-
-  returnColor(Color color) {
-    return colorList.add(color);
-  }
-}
-
-class NewPrice extends GetxController {
-  var newPrice = 0.obs;
-}
-
-class SelectedGrinding {
-  //var newGrinding = "Select Grind".obs;
-  //var _priceList = List.filled(0, 0).obs;
-  var newGrinding;
-  List<String> grindList = [];
-  returnNewGrinding(String newGrinding) {
-    return newGrinding = newGrinding;
   }
 }

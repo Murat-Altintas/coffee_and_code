@@ -18,7 +18,7 @@ class MainCoffeeClass extends StatefulWidget {
 }
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
-  final totalPiece = Get.put(TotalPiece());
+  final totalPiece = Get.put(PieceController());
   List<double> _pointsPositions;
   double _top;
   PageController _myPageController = PageController();
@@ -153,8 +153,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                         IconButton(
                           splashRadius: 20,
                           onPressed: () {
-                            Get.to(CartPage());
-
+                            Get.to(() => CartPage());
                             /*
                             .map((everyItems) => PageView(
                                   scrollDirection: Axis.horizontal,
@@ -174,7 +173,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                         CircleAvatar(
                           radius: 10,
                           backgroundColor: Colors.red,
-                          child: GetX<TotalPiece>(
+                          child: GetX<PieceController>(
                             builder: (_) => Text(
                               "${totalPiece.totalPiece.toString()}",
                               style: TextStyle(color: Colors.white),
