@@ -17,13 +17,13 @@ class AlertDialogClass extends StatelessWidget {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(headline),
-            titleTextStyle: mainTheme.textTheme.headline2
+            titleTextStyle: mainTheme.textTheme.headline2!
                 .copyWith(fontSize: context.normalText),
             actions: [
               TextButton(
                 child: Text(
                   "OK",
-                  style: mainTheme.textTheme.headline1
+                  style: mainTheme.textTheme.headline1!
                       .copyWith(fontSize: context.normalText),
                 ),
                 onPressed: () {

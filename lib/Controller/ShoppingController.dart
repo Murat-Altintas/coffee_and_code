@@ -1,9 +1,4 @@
-import 'dart:convert';
-
 import 'package:coffee_and_code/Repository/Coffees.dart';
-import 'package:coffee_and_code/View/MainScreens/MainPage.dart';
-import 'package:coffee_and_code/View/MainScreens/ProductInfo/TopSpecs.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class CartItem {
@@ -11,15 +6,20 @@ class CartItem {
   int count, price;
   String grind;
 
-  CartItem({this.coffee, this.count, this.price, this.grind});
+  CartItem({
+    required this.coffee,
+    required this.count,
+    required this.price,
+    required this.grind,
+  });
 }
 
 class ShoppingController extends GetxController {
   var products = <String, CartItem>{}.obs;
 
-  addProduct(CoffeesClass item, int piece, price, String grind) {
+  addProduct(CoffeesClass item, int piece, price, String? grind) {
     products[item.id] =
-        CartItem(coffee: item, count: piece, price: price, grind: grind);
+        CartItem(coffee: item, count: piece, price: price, grind: grind??'');
   }
 
 /*
@@ -40,7 +40,7 @@ class PieceController extends GetxController {
   increaseProductPiece(products, coffee) {
     var _products = products.obs;
 
-    products[coffee.coffee.id].count = coffee.count +1;
+    products[coffee.coffee.id].count = coffee.count + 1;
 
     return _products;
   }
@@ -49,7 +49,10 @@ class PieceController extends GetxController {
 class TotalCoffeePrice {
   var newPrice = 0;
 
-  returnNewPrice({int price, int piece}) {
+  returnNewPrice({
+    required int price,
+    required int piece,
+  }) {
     //"[] and {} for optional choice"
     return newPrice = price * piece;
   }

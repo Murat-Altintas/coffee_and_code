@@ -16,11 +16,6 @@ class SecondLeftBar extends StatefulWidget {
 class _SecondLeftBarState extends State<SecondLeftBar> {
   PageController _myTabController = PageController();
 
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {});
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +76,8 @@ class BottomBarWidget extends StatelessWidget {
   final void Function(int current) currentTab;
 
   const BottomBarWidget({
-    Key key,
-    @required this.currentTab,
+    Key? key,
+    required this.currentTab,
   }) : super(key: key);
 
   @override

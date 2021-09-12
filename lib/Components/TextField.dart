@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 class TextFields extends StatefulWidget {
   final controller;
   final validator;
-  final String hintText;
+  final String? hintText;
   final textStyle;
   final suffixIcon;
   final obscureText;
@@ -16,7 +16,7 @@ class TextFields extends StatefulWidget {
   final focusNode;
 
   const TextFields(
-      {Key key,
+      {Key? key,
       this.controller,
       this.validator,
       this.hintText,
@@ -47,7 +47,7 @@ class _TextFieldsState extends State<TextFields> {
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          errorStyle: mainTheme.textTheme.headline3
+          errorStyle: mainTheme.textTheme.headline3!
               .copyWith(fontSize: context.smallText, color: Colors.red),
           suffixIcon: widget.suffixIcon,
           errorText: widget.error,

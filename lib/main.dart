@@ -1,9 +1,8 @@
-import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
-import 'package:flutter/material.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
+import 'package:coffee_and_code/View/MainScreens/SecondLeftBar.dart';
+import 'package:coffee_and_code/i18n/i18n.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'View/LoginScreens/FirstLeftBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +13,8 @@ class MyApp extends StatelessWidget {
       home: Builder(builder: (context) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          locale: AppLocales.supportedLocales.first,
+          supportedLocales: AppLocales.supportedLocales,
           theme: _buildMainTheme(context),
           home: SecondLeftBar(),
           // child: FirstLeftBar(),

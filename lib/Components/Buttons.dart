@@ -11,13 +11,13 @@ class Button extends StatefulWidget {
   final child;
 
   const Button(
-      {Key key,
-      @required this.buttonColor,
-      @required this.buttonShadowColor,
-      @required this.onTap,
-      @required this.height,
-      @required this.width,
-      @required this.child})
+      {Key? key,
+      required this.buttonColor,
+      required this.buttonShadowColor,
+      required this.onTap,
+      required this.height,
+      required this.width,
+      required this.child})
       : super(key: key);
 
   @override
@@ -25,8 +25,8 @@ class Button extends StatefulWidget {
 }
 
 class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
-  double _scale;
-  AnimationController _controller;
+  late double _scale;
+  late AnimationController _controller;
 
   @override
   void initState() {

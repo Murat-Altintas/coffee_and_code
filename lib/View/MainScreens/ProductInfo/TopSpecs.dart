@@ -1,13 +1,14 @@
 import 'package:coffee_and_code/Components/Buttons.dart';
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Components/ProductBackShape.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/CartPage.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
+
 import '../SecondLeftBar.dart';
 
 class TopSpecs extends StatefulWidget {
@@ -22,9 +23,10 @@ class TopSpecs extends StatefulWidget {
 }
 
 class _TopSpecsState extends State<TopSpecs> {
-  String dropDownString;
-  int dropDownInt = 1;
-  AnimationController _controller;
+  String? dropDownString;
+  late int dropDownInt = 1;
+
+  // late AnimationController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +132,9 @@ class _TopSpecsState extends State<TopSpecs> {
                     value: e,
                   );
                 }).toList(),
-                onChanged: (int dropDownSelect) {
+                onChanged: (dropDownSelect) {
                   setState(() {
-                    dropDownInt = dropDownSelect;
+                    dropDownInt = dropDownSelect!;
                   });
                 },
               ),
@@ -152,9 +154,9 @@ class _TopSpecsState extends State<TopSpecs> {
                     value: e,
                   );
                 }).toList(),
-                onChanged: (String selected) {
+                onChanged: (selected) {
                   setState(() {
-                    dropDownString = selected;
+                    dropDownString = selected!;
                     //widget.selectedGrinding.newGrinding.value = dropDownString;
                   });
                 },
@@ -177,15 +179,18 @@ class _TopSpecsState extends State<TopSpecs> {
               buttonColor: mainTheme.primaryColorDark,
               buttonShadowColor: mainTheme.primaryColorDark,
               child: Lottie.asset(
-                  "assets/lottie/add_to_cart.json",
-                  controller: _controller, onLoaded: (composition) {}),
+                "assets/lottie/add_to_cart.json",
+                // controller: _controller,
+                onLoaded: (composition) {},
+              ),
               onTap: () {
                 widget.totalPiece.increaseCartPiece(dropDownInt);
                 widget.shoppingController.addProduct(
-                    widget.coffeesClass,
-                    dropDownInt,
-                    widget.coffeesClass.price * dropDownInt,
-                    dropDownString);
+                  widget.coffeesClass,
+                  dropDownInt,
+                  widget.coffeesClass.price * dropDownInt,
+                  dropDownString,
+                );
               },
               height: context.height2 * 7,
               width: context.width2 * 14),

@@ -9,20 +9,20 @@ class CoffeesClass {
   final Color bgColor;
 
   CoffeesClass({
-    this.id,
-    this.name,
-    this.imagePath,
-    this.description,
-    this.weight,
-    this.price,
-    this.gradient,
-    this.piece,
-    this.bgColor,
-    this.aroma,
-    this.brewing,
-    this.height,
-    this.variety,
-    this.grinding,
+    required this.id,
+    required this.name,
+    required this.imagePath,
+    required this.description,
+    required this.weight,
+    required this.price,
+    required this.gradient,
+    required this.piece,
+    required this.bgColor,
+    required this.aroma,
+    required this.brewing,
+    required this.height,
+    required this.variety,
+    required this.grinding,
   });
 }
 

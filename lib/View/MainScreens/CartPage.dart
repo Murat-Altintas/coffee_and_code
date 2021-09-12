@@ -1,25 +1,21 @@
-import 'dart:ui';
-
 import 'package:coffee_and_code/Components/Buttons.dart';
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class CartPage extends StatefulWidget {
   final newProductPiece = Get.put(ShoppingController());
   final totalPiece = Get.put(PieceController());
+  final CoffeesClass? coffeesClass;
 
-  final CoffeesClass coffeesClass;
-
-  CartPage({Key key, this.coffeesClass}) : super(key: key);
+  CartPage({Key? key, this.coffeesClass}) : super(key: key);
 
   @override
   State createState() {
@@ -52,13 +48,13 @@ class CartPageState extends State<CartPage> {
             children: shoppingController.products
                 .map(
                   (id, element) => MapEntry(
-                id,
-                Card(
-                  margin: EdgeInsets.all(20),
-                  color: Colors.white,
-                  elevation: 5,
-                  child: ExpandableNotifier(
-                      child: ScrollOnExpand(
+                    id,
+                    Card(
+                      margin: EdgeInsets.all(20),
+                      color: Colors.white,
+                      elevation: 5,
+                      child: ExpandableNotifier(
+                          child: ScrollOnExpand(
                         child: Padding(
                           padding: context.paddingMedium,
                           child: Column(
@@ -196,7 +192,7 @@ class CartPageState extends State<CartPage> {
                                                       setState(() {
                                                         shoppingController
                                                             .products[element
-                                                                .coffee.id]
+                                                                .coffee.id]!
                                                             .count = element
                                                                 .count -
                                                             1;
@@ -250,18 +246,15 @@ class CartPageState extends State<CartPage> {
                                           children: [
                                             element.count < 0
                                                 ? Text(
-                                              "0",
-                                              style: mainTheme
-                                                  .textTheme
-                                                  .headline4,
-                                            )
+                                                    "0",
+                                                    style: mainTheme
+                                                        .textTheme.headline4,
+                                                  )
                                                 : Text(
-                                              element.count
-                                                  .toString(),
-                                              style: mainTheme
-                                                  .textTheme
-                                                  .headline4,
-                                            ),
+                                                    element.count.toString(),
+                                                    style: mainTheme
+                                                        .textTheme.headline4,
+                                                  ),
                                             Text(
                                               element.price.toString() + "€",
                                               style:
@@ -278,8 +271,8 @@ class CartPageState extends State<CartPage> {
                                 children: <Widget>[
                                   Builder(
                                     builder: (context) {
-                                      var controller =
-                                      ExpandableController.of(context);
+                                      final controller =
+                                          ExpandableController.of(context)!;
                                       return TextButton(
                                         child: Text(
                                           controller.expanded
@@ -306,10 +299,6 @@ class CartPageState extends State<CartPage> {
                 .toList()),
       ),
     );
-  }
-
-  Row LeftInfo(CartItem element, ThemeData mainTheme, BuildContext context) {
-    // return ;
   }
 }
 

@@ -1,8 +1,8 @@
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Components/ProductWidget.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:flutter/material.dart';
-import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
@@ -11,7 +11,7 @@ import 'CartPage.dart';
 class MainCoffeeClass extends StatefulWidget {
   final List<String> mainList;
 
-  const MainCoffeeClass({Key key, this.mainList}) : super(key: key);
+  const MainCoffeeClass({Key? key, required this.mainList}) : super(key: key);
 
   @override
   _MainCoffeeClassState createState() => _MainCoffeeClassState(mainList);
@@ -19,11 +19,11 @@ class MainCoffeeClass extends StatefulWidget {
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
   final totalPiece = Get.put(PieceController());
-  List<double> _pointsPositions;
-  double _top;
+  late List<double> _pointsPositions;
+  double? _top;
   PageController _myPageController = PageController();
-  int _leftTabs = 0;
-  int i;
+  late int _leftTabs = 0;
+  late int i;
   final List<String> incomingTextList;
 
   _MainCoffeeClassState(this.incomingTextList);
@@ -106,7 +106,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                     AnimatedPositioned(
                       duration: Duration(seconds: 1),
                       curve: Curves.elasticInOut,
-                      top: _top - height / 16,
+                      top: _top! - height / 16,
                       child: Padding(
                         padding: EdgeInsets.only(left: context.width2 * 10),
                         child: Container(
@@ -134,20 +134,16 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                 SizedBox(height: context.height2 * 2),
                 Row(
                   children: [
-                    _leftTabs == 0
-                        ? Text("African Coffees",
-                            style: mainTheme.textTheme.headline4)
-                        : _leftTabs == 1
-                            ? Text("American Coffees",
-                                style: mainTheme.textTheme.headline4)
-                            : _leftTabs == 2
-                                ? Text("Blend",
-                                    style: mainTheme.textTheme.headline4)
-                                : _leftTabs == 3
-                                    ? Text("Options Page",
-                                        style: mainTheme.textTheme.headline4)
-                                    : null,
-                    Spacer(),
+                    Expanded(
+                      child: Text(
+                        getTabTitle(),
+                        style: mainTheme.textTheme.headline4,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                    ),
+                    // Spacer(),
                     Stack(
                       children: [
                         IconButton(
@@ -221,16 +217,27 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
       _top = _pointsPositions[p1] + 0;
     });
   }
+
+  final titles = [
+    "African Coffees",
+    "American Coffees",
+    "Blend",
+    "Options Page",
+  ];
+
+  String getTabTitle() {
+    return titles[_leftTabs];
+  }
 }
 
 class _MenuTextWidget extends StatelessWidget {
   const _MenuTextWidget({
-    Key key,
-    @required this.indexChecked,
-    @required this.chooseLeftTab,
-    this.i,
-    @required this.animationController,
-    @required this.textList,
+    Key? key,
+    required this.indexChecked,
+    required this.chooseLeftTab,
+    required this.i,
+    required this.animationController,
+    required this.textList,
   }) : super(key: key);
 
   final void Function(int p1) indexChecked;
