@@ -5,7 +5,6 @@ import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
 import 'CartPage.dart';
 import 'options_page.dart';
@@ -20,7 +19,8 @@ class MainCoffeeClass extends StatefulWidget {
 }
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
-  final totalPiece = Get.put(PieceController());
+  final quantityController = Get.put(PieceController());
+
   late List<double> _pointsPositions;
   double? _top;
   PageController _myPageController = PageController();
@@ -171,9 +171,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                         CircleAvatar(
                           radius: 10,
                           backgroundColor: Colors.red,
-                          child: GetX<PieceController>(
-                            builder: (_) => Text(
-                              "${totalPiece.totalPiece.toString()}",
+                          child: Obx(
+                            () => Text(
+                              quantityController.quantityString,
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -221,6 +221,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
   }
 
   static final _trk = TKeys.view.mainScreens.mainPage;
+
   List<String> get titles => [
         _trk.africanCoffees.tr,
         _trk.americanCoffees.tr,

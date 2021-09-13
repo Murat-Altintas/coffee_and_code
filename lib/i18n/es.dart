@@ -56,13 +56,11 @@ abstract class LocaleEs {
     "View.MainScreens.CartPage.expandable": "Expansible",
     "View.MainScreens.CartPage.expand": "EXPANDIR",
     "View.MainScreens.ProductInfo.ProductInfoPage.overview": "Visión general",
-    "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "AROMA",
-    "View.MainScreens.ProductInfo.ProductInfoPage.brewi̇ng":
-        "FABRICACIÓN DE CERVEZA",
-    "View.MainScreens.ProductInfo.ProductInfoPage.height": "ALTURA",
-    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "VARIEDAD",
-    "View.MainScreens.ProductInfo.TopSpecs.price": "PRECIO",
-    "View.MainScreens.ProductInfo.TopSpecs.grind": "TRITURAR",
+    "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "Aroma",
+    "View.MainScreens.ProductInfo.ProductInfoPage.height": "Altura",
+    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "Variedad",
+    "View.MainScreens.ProductInfo.TopSpecs.price": "Precio",
+    "View.MainScreens.ProductInfo.TopSpecs.grind": "Triturar",
     "View.MainScreens.ProductInfo.TopSpecs.choose": "Escoger",
     "View.MainScreens.SecondLeftBar.africa": "África",
     "View.MainScreens.SecondLeftBar.america": "America",
@@ -87,6 +85,9 @@ abstract class LocaleEs {
     "View.LoginScreens.SignUpPage.welcome": "Bienvenido;",
     "View.LoginScreens.SignUpPage.sign_up": "Inscribirse",
     "View.LoginScreens.SignUpPage.or_sign_up_with": "o regístrate con",
-    "View.MainScreens.OptionsPage.changeLanguage": "Cambiar idioma:"
+    "View.MainScreens.OptionsPage.changeLanguage": "Cambiar idioma:",
+    "View.MainScreens.ProductInfo.TopSpecs.quantity": "Cantidad",
+    "View.MainScreens.ProductInfo.ProductInfoPage.brewing":
+        "Fabricación de cerveza"
   };
 }

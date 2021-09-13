@@ -56,9 +56,8 @@ abstract class LocaleAr {
     "View.MainScreens.CartPage.expand": "وسعت",
     "View.MainScreens.ProductInfo.ProductInfoPage.overview": "ملخص",
     "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "رائحة",
-    "View.MainScreens.ProductInfo.ProductInfoPage.brewi̇ng": "Brewİng.",
     "View.MainScreens.ProductInfo.ProductInfoPage.height": "ارتفاع",
-    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "تشكيلة",
+    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "متنوع",
     "View.MainScreens.ProductInfo.TopSpecs.price": "سعر",
     "View.MainScreens.ProductInfo.TopSpecs.grind": "طحن",
     "View.MainScreens.ProductInfo.TopSpecs.choose": "يختار",
@@ -85,6 +84,8 @@ abstract class LocaleAr {
     "View.LoginScreens.SignUpPage.welcome": "أهلا بك؛",
     "View.LoginScreens.SignUpPage.sign_up": "اشتراك",
     "View.LoginScreens.SignUpPage.or_sign_up_with": "أو الاشتراك مع",
-    "View.MainScreens.OptionsPage.changeLanguage": "تغيير اللغة:"
+    "View.MainScreens.OptionsPage.changeLanguage": "تغيير اللغة:",
+    "View.MainScreens.ProductInfo.TopSpecs.quantity": "كمية",
+    "View.MainScreens.ProductInfo.ProductInfoPage.brewing": "تخمير"
   };
 }

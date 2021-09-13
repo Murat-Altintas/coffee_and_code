@@ -54,12 +54,11 @@ abstract class LocaleRu {
     "View.MainScreens.CartPage.expandable": "Расширяемый",
     "View.MainScreens.CartPage.expand": "РАСШИРЯТЬ",
     "View.MainScreens.ProductInfo.ProductInfoPage.overview": "Обзор",
-    "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "АРОМАТ",
-    "View.MainScreens.ProductInfo.ProductInfoPage.brewi̇ng": "Brewİng.",
-    "View.MainScreens.ProductInfo.ProductInfoPage.height": "РОСТ",
-    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "РАЗНООБРАЗИЕ",
-    "View.MainScreens.ProductInfo.TopSpecs.price": "ЦЕНА",
-    "View.MainScreens.ProductInfo.TopSpecs.grind": "МОЛОТЬ",
+    "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "Аромат",
+    "View.MainScreens.ProductInfo.ProductInfoPage.height": "Рост",
+    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "Разнообразие",
+    "View.MainScreens.ProductInfo.TopSpecs.price": "Цена",
+    "View.MainScreens.ProductInfo.TopSpecs.grind": "Молоть",
     "View.MainScreens.ProductInfo.TopSpecs.choose": "Выбирать",
     "View.MainScreens.SecondLeftBar.africa": "Африка",
     "View.MainScreens.SecondLeftBar.america": "Америка",
@@ -84,6 +83,8 @@ abstract class LocaleRu {
     "View.LoginScreens.SignUpPage.welcome": "Добро пожаловать;",
     "View.LoginScreens.SignUpPage.sign_up": "Зарегистрироваться",
     "View.LoginScreens.SignUpPage.or_sign_up_with": "или зарегистрироваться",
-    "View.MainScreens.OptionsPage.changeLanguage": "Изменение языка:"
+    "View.MainScreens.OptionsPage.changeLanguage": "Изменение языка:",
+    "View.MainScreens.ProductInfo.TopSpecs.quantity": "Количество",
+    "View.MainScreens.ProductInfo.ProductInfoPage.brewing": "Варево"
   };
 }

@@ -73,7 +73,7 @@ class _SecondLeftBarState extends State<SecondLeftBar> {
                 ),
               ),
             ),
-            SizedBox(height: context.height2 * 1),
+            SizedBox(height: context.height2),
           ],
         ),
       ),

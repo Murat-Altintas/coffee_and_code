@@ -4,6 +4,8 @@ import 'package:coffee_and_code/Components/ProductBackShape.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
 import 'package:coffee_and_code/View/MainScreens/CartPage.dart';
+import 'package:coffee_and_code/i18n/i18n.dart';
+import 'package:coffee_and_code/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -24,7 +26,9 @@ class TopSpecs extends StatefulWidget {
 
 class _TopSpecsState extends State<TopSpecs> {
   String? dropDownString;
-  late int dropDownInt = 1;
+  late int quantity = 1;
+
+  static final _trk = TKeys.view.mainScreens.productInfo.topSpecs;
 
   // late AnimationController _controller;
 
@@ -71,22 +75,20 @@ class _TopSpecsState extends State<TopSpecs> {
                         color: mainTheme.primaryColorDark,
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 10,
-                      backgroundColor: Colors.red,
-                      /*
-                      GetX<BasketController>(
-                        builder: (_) => Text(
-                          "${widget.basketController.cartBasket}",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                       */
-
-                      child: GetX<PieceController>(
-                        builder: (_) => Text(
-                          widget.totalPiece.totalPiece.toString(),
-                          style: TextStyle(color: Colors.white),
+                      alignment: Alignment.center,
+                      child: Obx(
+                        () => Text(
+                          widget.totalPiece.quantityString,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            height: 1.2,
+                          ),
                         ),
                       ),
                     ),
@@ -112,41 +114,60 @@ class _TopSpecsState extends State<TopSpecs> {
                 height: context.lowestContainer,
               ),
               //widget.TotalCoffeePrice.returnNewPrice(widget.coffeesClass.price, dropDownInt).toString() + "€"
-              Text("PRICE", style: mainTheme.primaryTextTheme.headline1),
+              Text(
+                // "PRICE",
+                _trk.price.tr,
+                style: mainTheme.primaryTextTheme.headline1,
+              ),
               SizedBox(
                 height: context.height2 * 1.5,
               ),
-              Text((widget.coffeesClass.price * dropDownInt).toString() + ("€"),
-                  style: mainTheme.primaryTextTheme.headline2),
+              Text(
+                /// actual price
+                totalCoffeePrice(),
+                // (widget.coffeesClass.price * dropDownInt).toString() + ("€"),
+                style: mainTheme.primaryTextTheme.headline2,
+              ),
               SizedBox(
                 height: context.lowContainer,
               ),
-              Text("PIECE", style: mainTheme.primaryTextTheme.headline1),
+              Text(
+                // "PIECE",
+                _trk.quantity.tr,
+                style: mainTheme.primaryTextTheme.headline1,
+              ),
               DropdownButton<int>(
                 dropdownColor: mainTheme.primaryColorDark,
-                value: dropDownInt,
+                value: quantity,
                 items: widget.coffeesClass.piece.map((int e) {
                   return DropdownMenuItem(
-                    child: Text(e.toString(),
-                        style: mainTheme.primaryTextTheme.headline2),
+                    child:
+                        Text('$e', style: mainTheme.primaryTextTheme.headline2),
                     value: e,
                   );
                 }).toList(),
                 onChanged: (dropDownSelect) {
                   setState(() {
-                    dropDownInt = dropDownSelect!;
+                    quantity = dropDownSelect!;
                   });
                 },
               ),
               SizedBox(
                 height: context.lowContainer,
               ),
-              Text("GRIND", style: mainTheme.primaryTextTheme.headline1),
+              Text(
+                // "GRIND",
+                _trk.grind.tr,
+                style: mainTheme.primaryTextTheme.headline1,
+              ),
 
               DropdownButton<String>(
                 dropdownColor: mainTheme.primaryColorDark,
-                hint:
-                    Text("Choose", style: mainTheme.primaryTextTheme.headline2),
+                hint: Text(
+                  // "Choose",
+                  _trk.choose.tr,
+                  style: mainTheme.primaryTextTheme.headline2,
+                ),
                 value: dropDownString,
                 items: widget.coffeesClass.grinding.map((String e) {
                   return DropdownMenuItem(
@@ -184,11 +205,11 @@ class _TopSpecsState extends State<TopSpecs> {
                 onLoaded: (composition) {},
               ),
               onTap: () {
-                widget.totalPiece.increaseCartPiece(dropDownInt);
+                widget.totalPiece.addQuantity(quantity);
                 widget.shoppingController.addProduct(
                   widget.coffeesClass,
-                  dropDownInt,
-                  widget.coffeesClass.price * dropDownInt,
+                  quantity,
+                  widget.coffeesClass.price * quantity,
                   dropDownString,
                 );
               },
@@ -197,6 +218,11 @@ class _TopSpecsState extends State<TopSpecs> {
         ),
       ],
     );
+  }
+
+  String totalCoffeePrice() {
+    final total = widget.coffeesClass.price * quantity;
+    return LocaleUtils.formatPrice(total);
   }
 }
 

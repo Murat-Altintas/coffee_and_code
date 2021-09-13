@@ -28,13 +28,14 @@ View:
     ProductInfo:
       ProductInfoPage:
         overview: Overview
-        aroma: AROMA
-        brewi̇ng: BREWİNG
-        height: HEIGHT
-        variety: VARIETY
+        aroma: Aroma
+        brewing: Brewing
+        height: Height
+        variety: Variety
       TopSpecs:
-        price: PRICE
-        grind: GRIND
+        price: Price
+        quantity: Quantity
+        grind: Grind
         choose: Choose
 
     SecondLeftBar:

@@ -221,8 +221,7 @@ class $ProductInfoPage26 {
   final String overview =
       'View.MainScreens.ProductInfo.ProductInfoPage.overview';
   final String aroma = 'View.MainScreens.ProductInfo.ProductInfoPage.aroma';
-  final String brewi_ng =
-      'View.MainScreens.ProductInfo.ProductInfoPage.brewi̇ng';
+  final String brewing = 'View.MainScreens.ProductInfo.ProductInfoPage.brewing';
   final String height = 'View.MainScreens.ProductInfo.ProductInfoPage.height';
   final String variety = 'View.MainScreens.ProductInfo.ProductInfoPage.variety';
 }
@@ -233,6 +232,7 @@ class $TopSpecs27 {
 
   $TopSpecs27._();
   final String price = 'View.MainScreens.ProductInfo.TopSpecs.price';
+  final String quantity = 'View.MainScreens.ProductInfo.TopSpecs.quantity';
   final String grind = 'View.MainScreens.ProductInfo.TopSpecs.grind';
   final String choose = 'View.MainScreens.ProductInfo.TopSpecs.choose';
 }

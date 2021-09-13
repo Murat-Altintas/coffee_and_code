@@ -1,4 +1,6 @@
 import 'package:coffee_and_code/i18n/i18n.dart';
+import 'package:coffee_and_code/utils/app_utils.dart';
+import 'package:coffee_and_code/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -13,9 +15,12 @@ class CoffeesClass {
       brewing,
       height,
       variety;
-  final int price;
   final List<Color> gradient;
   final Color bgColor;
+  final double price;
+
+  /// use this.... and find a way to convert the currencies values.
+  String get priceCurrency => LocaleUtils.formatPrice(price);
 
   CoffeesClass({
     required this.id,
@@ -77,9 +82,9 @@ List<CoffeesClass> get singleOrigin {
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       description: _baseKey.kenya.description.tr,
       imagePath: "assets/images/kenya.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       price: 35,
-      height: "1700-200M",
+      height: "170-200 mm",
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       // brewing: "Espresso, V60, Filter",
       brewing: defaultBrewing,
@@ -102,9 +107,9 @@ List<CoffeesClass> get singleOrigin {
       name: _baseKey.brasil.name.tr,
       description: _baseKey.brasil.description.tr,
       imagePath: "assets/images/brasil.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       price: 35,
-      height: "1700-200M",
+      height: "170-200M",
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       brewing: defaultBrewing,
       aroma: _baseKey.brasil.aroma.tr,
@@ -125,7 +130,7 @@ List<CoffeesClass> get singleOrigin {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/costarica.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       price: 35,
       height: "1700-200M",
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -155,7 +160,7 @@ List<CoffeesClass> get singleServe {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/kenya.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       price: 35,
       height: "1700-200M",
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -178,7 +183,8 @@ List<CoffeesClass> get singleServe {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/brasil.png",
-      weight: ["250gr", "500gr", "1kg"],
+      // weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       brewing: defaultBrewing,
       price: 35,
@@ -202,9 +208,10 @@ List<CoffeesClass> get singleServe {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/costarica.png",
-      weight: ["250gr", "500gr", "1kg"],
+      // weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      price: 35,
+      price: 28,
       height: "1700-200M",
       brewing: defaultBrewing,
       // aroma: "Caramel and Fruits Notes",
@@ -232,9 +239,9 @@ List<CoffeesClass> get blendCoffees {
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       // aroma: "Caramel and Fruits Notes",
       imagePath: "assets/images/christmas_blend.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      price: 35,
+      price: 20,
       height: "1700-200M",
       brewing: defaultBrewing,
       variety: defaultVariety,
@@ -257,9 +264,9 @@ List<CoffeesClass> get blendCoffees {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/christmas_decaf.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      price: 35,
+      price: 18,
       height: "1700-200M",
 
       // aroma: "Caramel and Fruits Notes",
@@ -282,7 +289,7 @@ List<CoffeesClass> get blendCoffees {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/espresso_roast_vintage.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       price: 35,
       height: "1700-200M",
@@ -306,7 +313,7 @@ List<CoffeesClass> get blendCoffees {
       // description:
       //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
       imagePath: "assets/images/holiday_blend.png",
-      weight: ["250gr", "500gr", "1kg"],
+      weight: [250.grFormat, 500.grFormat, 1.kgFormat],
       piece: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       price: 35,
       height: "1700-200M",

@@ -57,11 +57,10 @@ abstract class LocaleTr {
     "View.MainScreens.CartPage.expand": "GENİŞLETMEK",
     "View.MainScreens.ProductInfo.ProductInfoPage.overview": "Genel bakış",
     "View.MainScreens.ProductInfo.ProductInfoPage.aroma": "Aroma",
-    "View.MainScreens.ProductInfo.ProductInfoPage.brewi̇ng": "BREWİNG",
-    "View.MainScreens.ProductInfo.ProductInfoPage.height": "BOY UZUNLUĞU",
-    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "ÇEŞİTLİLİK",
-    "View.MainScreens.ProductInfo.TopSpecs.price": "FİYAT",
-    "View.MainScreens.ProductInfo.TopSpecs.grind": "ÖĞÜTMEK",
+    "View.MainScreens.ProductInfo.ProductInfoPage.height": "Boy uzunluğu",
+    "View.MainScreens.ProductInfo.ProductInfoPage.variety": "Çeşitlilik",
+    "View.MainScreens.ProductInfo.TopSpecs.price": "Fiyat",
+    "View.MainScreens.ProductInfo.TopSpecs.grind": "Öğütmek",
     "View.MainScreens.ProductInfo.TopSpecs.choose": "Seçmek",
     "View.MainScreens.SecondLeftBar.africa": "Afrika",
     "View.MainScreens.SecondLeftBar.america": "Amerika",
@@ -85,6 +84,8 @@ abstract class LocaleTr {
     "View.LoginScreens.SignUpPage.welcome": "Hoş geldin;",
     "View.LoginScreens.SignUpPage.sign_up": "Üye olmak",
     "View.LoginScreens.SignUpPage.or_sign_up_with": "veya kaydolun",
-    "View.MainScreens.OptionsPage.changeLanguage": "Dili değiştir:"
+    "View.MainScreens.OptionsPage.changeLanguage": "Dili değiştir:",
+    "View.MainScreens.ProductInfo.TopSpecs.quantity": "Miktar",
+    "View.MainScreens.ProductInfo.ProductInfoPage.brewing": "Demlik"
   };
 }

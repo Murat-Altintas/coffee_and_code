@@ -26,32 +26,30 @@ class Button extends StatefulWidget {
 
 class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
   late double _scale;
-  late AnimationController _controller;
+  late AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: Duration(milliseconds: 200),
+    lowerBound: 0.2,
+    upperBound: 0.44,
+  )..addListener(() {
+    setState(() {});
+  });
 
   @override
   void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 200),
-      lowerBound: 0.2,
-      upperBound: 0.3,
-    )..addListener(() {
-        setState(() {});
-      });
     super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     //final mainTheme = Theme.of(context);
     _scale = 1.2 - _controller.value;
-
     return GestureDetector(
       onTapDown: _tapDown,
       onTapUp: _tapUp,
@@ -82,10 +80,12 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
   }
 
   void _tapDown(TapDownDetails details) {
+    print('down!');
     _controller.forward();
   }
 
   void _tapUp(TapUpDetails details) {
+    print('up!');
     _controller.reverse();
   }
 }
