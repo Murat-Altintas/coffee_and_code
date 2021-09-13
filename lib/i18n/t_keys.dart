@@ -194,22 +194,30 @@ class $MainPage22 {
   final String just = 'View.MainScreens.MainPage.just';
 }
 
-class $CartPage23 {
+class $OptionsPage23 {
+  @override
+  String toString() => "View.MainScreens.OptionsPage.";
+
+  $OptionsPage23._();
+  final String changeLanguage = 'View.MainScreens.OptionsPage.changeLanguage';
+}
+
+class $CartPage24 {
   @override
   String toString() => "View.MainScreens.CartPage.";
 
-  $CartPage23._();
+  $CartPage24._();
   final String cartPage = 'View.MainScreens.CartPage.cart_page';
   final String collapse = 'View.MainScreens.CartPage.collapse';
   final String expandable = 'View.MainScreens.CartPage.expandable';
   final String expand = 'View.MainScreens.CartPage.expand';
 }
 
-class $ProductInfoPage25 {
+class $ProductInfoPage26 {
   @override
   String toString() => "View.MainScreens.ProductInfo.ProductInfoPage.";
 
-  $ProductInfoPage25._();
+  $ProductInfoPage26._();
   final String overview =
       'View.MainScreens.ProductInfo.ProductInfoPage.overview';
   final String aroma = 'View.MainScreens.ProductInfo.ProductInfoPage.aroma';
@@ -219,30 +227,30 @@ class $ProductInfoPage25 {
   final String variety = 'View.MainScreens.ProductInfo.ProductInfoPage.variety';
 }
 
-class $TopSpecs26 {
+class $TopSpecs27 {
   @override
   String toString() => "View.MainScreens.ProductInfo.TopSpecs.";
 
-  $TopSpecs26._();
+  $TopSpecs27._();
   final String price = 'View.MainScreens.ProductInfo.TopSpecs.price';
   final String grind = 'View.MainScreens.ProductInfo.TopSpecs.grind';
   final String choose = 'View.MainScreens.ProductInfo.TopSpecs.choose';
 }
 
-class $ProductInfo24 {
+class $ProductInfo25 {
   @override
   String toString() => "View.MainScreens.ProductInfo.";
 
-  $ProductInfo24._();
-  final $ProductInfoPage25 productInfoPage = $ProductInfoPage25._();
-  final $TopSpecs26 topSpecs = $TopSpecs26._();
+  $ProductInfo25._();
+  final $ProductInfoPage26 productInfoPage = $ProductInfoPage26._();
+  final $TopSpecs27 topSpecs = $TopSpecs27._();
 }
 
-class $SecondLeftBar27 {
+class $SecondLeftBar28 {
   @override
   String toString() => "View.MainScreens.SecondLeftBar.";
 
-  $SecondLeftBar27._();
+  $SecondLeftBar28._();
   final String africa = 'View.MainScreens.SecondLeftBar.africa';
   final String america = 'View.MainScreens.SecondLeftBar.america';
   final String blend = 'View.MainScreens.SecondLeftBar.blend';
@@ -260,36 +268,37 @@ class $MainScreens21 {
 
   $MainScreens21._();
   final $MainPage22 mainPage = $MainPage22._();
-  final $CartPage23 cartPage = $CartPage23._();
-  final $ProductInfo24 productInfo = $ProductInfo24._();
-  final $SecondLeftBar27 secondLeftBar = $SecondLeftBar27._();
+  final $OptionsPage23 optionsPage = $OptionsPage23._();
+  final $CartPage24 cartPage = $CartPage24._();
+  final $ProductInfo25 productInfo = $ProductInfo25._();
+  final $SecondLeftBar28 secondLeftBar = $SecondLeftBar28._();
 }
 
-class $FirstLeftBar29 {
+class $FirstLeftBar30 {
   @override
   String toString() => "View.LoginScreens.FirstLeftBar.";
 
-  $FirstLeftBar29._();
+  $FirstLeftBar30._();
   final String signIn = 'View.LoginScreens.FirstLeftBar.signIn';
   final String signUp = 'View.LoginScreens.FirstLeftBar.signUp';
   final String restorePass = 'View.LoginScreens.FirstLeftBar.restorePass';
 }
 
-class $RestorePasswordPage30 {
+class $RestorePasswordPage31 {
   @override
   String toString() => "View.LoginScreens.RestorePasswordPage.";
 
-  $RestorePasswordPage30._();
+  $RestorePasswordPage31._();
   final String writeEmail = 'View.LoginScreens.RestorePasswordPage.write_email';
   final String restorePass =
       'View.LoginScreens.RestorePasswordPage.restorePass';
 }
 
-class $SignInPage31 {
+class $SignInPage32 {
   @override
   String toString() => "View.LoginScreens.SignInPage.";
 
-  $SignInPage31._();
+  $SignInPage32._();
   final String welcomeBack = 'View.LoginScreens.SignInPage.welcome_back';
   final String email = 'View.LoginScreens.SignInPage.email';
   final String complete = 'View.LoginScreens.SignInPage.complete';
@@ -297,25 +306,25 @@ class $SignInPage31 {
   final String orSignUp = 'View.LoginScreens.SignInPage.or_sign_up';
 }
 
-class $SignUpPage32 {
+class $SignUpPage33 {
   @override
   String toString() => "View.LoginScreens.SignUpPage.";
 
-  $SignUpPage32._();
+  $SignUpPage33._();
   final String welcome = 'View.LoginScreens.SignUpPage.welcome';
   final String signUp = 'View.LoginScreens.SignUpPage.sign_up';
   final String orSignUpWith = 'View.LoginScreens.SignUpPage.or_sign_up_with';
 }
 
-class $LoginScreens28 {
+class $LoginScreens29 {
   @override
   String toString() => "View.LoginScreens.";
 
-  $LoginScreens28._();
-  final $FirstLeftBar29 firstLeftBar = $FirstLeftBar29._();
-  final $RestorePasswordPage30 restorePasswordPage = $RestorePasswordPage30._();
-  final $SignInPage31 signInPage = $SignInPage31._();
-  final $SignUpPage32 signUpPage = $SignUpPage32._();
+  $LoginScreens29._();
+  final $FirstLeftBar30 firstLeftBar = $FirstLeftBar30._();
+  final $RestorePasswordPage31 restorePasswordPage = $RestorePasswordPage31._();
+  final $SignInPage32 signInPage = $SignInPage32._();
+  final $SignUpPage33 signUpPage = $SignUpPage33._();
 }
 
 class $View20 {
@@ -324,7 +333,7 @@ class $View20 {
 
   $View20._();
   final $MainScreens21 mainScreens = $MainScreens21._();
-  final $LoginScreens28 loginScreens = $LoginScreens28._();
+  final $LoginScreens29 loginScreens = $LoginScreens29._();
 }
 
 class TKeys {

@@ -86,6 +86,7 @@ abstract class LocaleEs {
     "View.LoginScreens.SignInPage.or_sign_up": "o regístrate con",
     "View.LoginScreens.SignUpPage.welcome": "Bienvenido;",
     "View.LoginScreens.SignUpPage.sign_up": "Inscribirse",
-    "View.LoginScreens.SignUpPage.or_sign_up_with": "o regístrate con"
+    "View.LoginScreens.SignUpPage.or_sign_up_with": "o regístrate con",
+    "View.MainScreens.OptionsPage.changeLanguage": "Cambiar idioma:"
   };
 }

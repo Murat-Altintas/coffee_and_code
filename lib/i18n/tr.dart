@@ -84,6 +84,7 @@ abstract class LocaleTr {
     "View.LoginScreens.SignInPage.or_sign_up": "veya kaydolun",
     "View.LoginScreens.SignUpPage.welcome": "Hoş geldin;",
     "View.LoginScreens.SignUpPage.sign_up": "Üye olmak",
-    "View.LoginScreens.SignUpPage.or_sign_up_with": "veya kaydolun"
+    "View.LoginScreens.SignUpPage.or_sign_up_with": "veya kaydolun",
+    "View.MainScreens.OptionsPage.changeLanguage": "Dili değiştir:"
   };
 }

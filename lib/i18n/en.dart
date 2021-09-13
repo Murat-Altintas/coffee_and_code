@@ -50,6 +50,7 @@ abstract class LocaleEn {
     "View.MainScreens.MainPage.blend": "Blend",
     "View.MainScreens.MainPage.options_page": "Options Page",
     "View.MainScreens.MainPage.just": "just",
+    "View.MainScreens.OptionsPage.changeLanguage": "Change language:",
     "View.MainScreens.CartPage.cart_page": "CART PAGE",
     "View.MainScreens.CartPage.collapse": "COLLAPSE",
     "View.MainScreens.CartPage.expandable": "Expandable",

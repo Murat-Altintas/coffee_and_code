@@ -2,11 +2,13 @@ import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Components/ProductWidget.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
+import 'package:coffee_and_code/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
 import 'CartPage.dart';
+import 'options_page.dart';
 
 class MainCoffeeClass extends StatefulWidget {
   final List<String> mainList;
@@ -14,7 +16,7 @@ class MainCoffeeClass extends StatefulWidget {
   const MainCoffeeClass({Key? key, required this.mainList}) : super(key: key);
 
   @override
-  _MainCoffeeClassState createState() => _MainCoffeeClassState(mainList);
+  _MainCoffeeClassState createState() => _MainCoffeeClassState();
 }
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
@@ -24,12 +26,12 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
   PageController _myPageController = PageController();
   late int _leftTabs = 0;
   late int i;
-  final List<String> incomingTextList;
 
-  _MainCoffeeClassState(this.incomingTextList);
+  List<String> get incomingTextList => widget.mainList;
 
   @override
   Widget build(BuildContext context) {
+    print('wtg   $incomingTextList');
     final mainTheme = Theme.of(context);
     return Row(
       children: [
@@ -185,13 +187,13 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                   child: PageView(
                     scrollDirection: Axis.vertical,
                     controller: _myPageController,
-                    physics: NeverScrollableScrollPhysics(),
                     children: _leftTabs == 3
 
                         ///i "just" can see "Options Page" text in Enable Widget Select Mode? :/
                         ? [
-                            Text("Options Page",
-                                style: mainTheme.textTheme.headline4)
+                            MainOptionsPage(),
+                            // Text("Options Page",
+                            //     style: mainTheme.textTheme.headline4)
                           ]
                         : coffeesType
                             .map((everyItems) => PageView(
@@ -218,16 +220,19 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
     });
   }
 
-  final titles = [
-    "African Coffees",
-    "American Coffees",
-    "Blend",
-    "Options Page",
-  ];
+  static final _trk = TKeys.view.mainScreens.mainPage;
+  List<String> get titles => [
+        _trk.africanCoffees.tr,
+        _trk.americanCoffees.tr,
+        _trk.blend.tr,
+        _trk.optionsPage.tr,
+        // "African Coffees",
+        // "American Coffees",
+        // "Blend",
+        // "Options Page",
+      ];
 
-  String getTabTitle() {
-    return titles[_leftTabs];
-  }
+  String getTabTitle() => titles[_leftTabs];
 }
 
 class _MenuTextWidget extends StatelessWidget {

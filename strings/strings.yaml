@@ -16,11 +16,15 @@ View:
       options_page: Options Page
       just: just
 
+    OptionsPage:
+      changeLanguage: "Change language:"
+
     CartPage:
       cart_page: CART PAGE
       collapse: COLLAPSE
       expandable: Expandable
       expand: EXPAND
+
     ProductInfo:
       ProductInfoPage:
         overview: Overview
@@ -32,6 +36,7 @@ View:
         price: PRICE
         grind: GRIND
         choose: Choose
+
     SecondLeftBar:
       africa: Africa
       america: America
@@ -42,6 +47,7 @@ View:
       third_party: 3rd Party
       coffees: Coffees
       third_gen: 3rd Gen
+
   LoginScreens:
     FirstLeftBar:
       signIn: Sign In

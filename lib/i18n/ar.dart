@@ -84,6 +84,7 @@ abstract class LocaleAr {
     "View.LoginScreens.SignInPage.or_sign_up": "أو الاشتراك مع",
     "View.LoginScreens.SignUpPage.welcome": "أهلا بك؛",
     "View.LoginScreens.SignUpPage.sign_up": "اشتراك",
-    "View.LoginScreens.SignUpPage.or_sign_up_with": "أو الاشتراك مع"
+    "View.LoginScreens.SignUpPage.or_sign_up_with": "أو الاشتراك مع",
+    "View.MainScreens.OptionsPage.changeLanguage": "تغيير اللغة:"
   };
 }

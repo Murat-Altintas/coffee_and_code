@@ -83,6 +83,7 @@ abstract class LocaleRu {
     "View.LoginScreens.SignInPage.or_sign_up": "или зарегистрироваться",
     "View.LoginScreens.SignUpPage.welcome": "Добро пожаловать;",
     "View.LoginScreens.SignUpPage.sign_up": "Зарегистрироваться",
-    "View.LoginScreens.SignUpPage.or_sign_up_with": "или зарегистрироваться"
+    "View.LoginScreens.SignUpPage.or_sign_up_with": "или зарегистрироваться",
+    "View.MainScreens.OptionsPage.changeLanguage": "Изменение языка:"
   };
 }
