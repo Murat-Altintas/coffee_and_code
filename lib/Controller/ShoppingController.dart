@@ -1,47 +1,56 @@
-import 'dart:convert';
-
 import 'package:coffee_and_code/Repository/Coffees.dart';
-import 'package:coffee_and_code/View/MainScreens/MainPage.dart';
-import 'package:coffee_and_code/View/MainScreens/ProductInfo/TopSpecs.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:coffee_and_code/utils/app_utils.dart';
 import 'package:get/get.dart';
 
-class CartItem {
+class CartItemModel {
   CoffeesClass coffee;
-  int count, price;
+  int count;
+  double price;
   String grind;
 
-  CartItem({this.coffee, this.count, this.price, this.grind});
+  CartItemModel({
+    required this.coffee,
+    required this.count,
+    required this.price,
+    required this.grind,
+  });
+
+  String get formatPrice {
+    return LocaleUtils.formatPrice(price);
+  }
 }
 
 class ShoppingController extends GetxController {
-  var products = <String, CartItem>{}.obs;
+  var products = <String, CartItemModel>{};
 
-  addProduct(CoffeesClass item, int piece, price, String grind) {
-    products[item.id] =
-        CartItem(coffee: item, count: piece, price: price, grind: grind);
+  addProduct(CoffeesClass item, int piece, double price, String? grind) {
+    products[item.id] = CartItemModel(
+      coffee: item,
+      count: piece,
+      price: price,
+      grind: grind ?? '',
+    );
   }
 
-/*
-  plusProduct(newCount) {
-    return cartCount + newCount;
-  }
-   */
+  int get totalCartItems => products.keys.length;
 
+  CartItemModel getItem(int idx) {
+    return products.values.toList()[idx];
+  }
 }
 
 class PieceController extends GetxController {
   var totalPiece = 0.obs;
 
-  increaseCartPiece(piece) {
-    return totalPiece + piece;
+  String get quantityString => totalPiece().toString();
+
+  void addQuantity(int piece) {
+    totalPiece.value += piece;
   }
 
   increaseProductPiece(products, coffee) {
     var _products = products.obs;
-
-    products[coffee.coffee.id].count = coffee.count +1;
-
+    products[coffee.coffee.id].count = coffee.count + 1;
     return _products;
   }
 }
@@ -49,7 +58,10 @@ class PieceController extends GetxController {
 class TotalCoffeePrice {
   var newPrice = 0;
 
-  returnNewPrice({int price, int piece}) {
+  returnNewPrice({
+    required int price,
+    required int piece,
+  }) {
     //"[] and {} for optional choice"
     return newPrice = price * piece;
   }

@@ -17,12 +17,11 @@ class FirstLeftBar extends StatefulWidget {
 class _FirstLeftBarState extends State<FirstLeftBar> {
   PageController _myController = PageController();
   int _checkIndex = 0;
-  double _top;
-  List<double> _pointsPositions;
+  late double _top;
+  late List<double> _pointsPositions;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {});
     super.initState();
   }
 
@@ -141,11 +140,11 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
 
 class _menuTextWidget extends StatelessWidget {
   const _menuTextWidget({
-    Key key,
-    @required this.indexChecked,
-    @required this.checkIndex,
-    this.i,
-    @required this.controller,
+    Key? key,
+    required this.indexChecked,
+    required this.checkIndex,
+    required this.i,
+    required this.controller,
   }) : super(key: key);
 
   final void Function(int p1) indexChecked;

@@ -8,10 +8,10 @@ class BottomSpecs extends StatelessWidget {
   final IconData icon;
 
   const BottomSpecs({
-    Key key,
-    @required this.title,
-    @required this.subtitle,
-    @required this.icon,
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.icon,
   }) : super(key: key);
 
   @override

@@ -10,10 +10,10 @@ class SocialMediaButtons extends StatefulWidget {
   final socialChild;
 
   const SocialMediaButtons(
-      {Key key,
-      @required this.buttonColor,
-      @required this.buttonShadowColor,
-      @required this.onTap,
+      {Key? key,
+      required this.buttonColor,
+      required this.buttonShadowColor,
+      required this.onTap,
       this.buttonStyle,
       this.socialChild})
       : super(key: key);
@@ -24,8 +24,8 @@ class SocialMediaButtons extends StatefulWidget {
 
 class _SocialMediaButtonsState extends State<SocialMediaButtons>
     with SingleTickerProviderStateMixin {
-  double _scale;
-  AnimationController _controller;
+  late double _scale;
+  late AnimationController _controller;
 
   @override
   void initState() {

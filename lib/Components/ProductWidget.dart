@@ -82,7 +82,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                widget.coffeesClass.price.toString() + "€",
+                                widget.coffeesClass.priceCurrency,
+                                // widget.coffeesClass.price.toString() + "€",
                                 style: mainTheme.textTheme.bodyText1,
                               ),
                               Text(

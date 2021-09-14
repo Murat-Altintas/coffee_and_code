@@ -1,35 +1,37 @@
+import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Components/ProductWidget.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:coffee_and_code/Repository/Coffees.dart';
+import 'package:coffee_and_code/i18n/i18n.dart';
 import 'package:flutter/material.dart';
-import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
 import 'CartPage.dart';
+import 'options_page.dart';
 
 class MainCoffeeClass extends StatefulWidget {
   final List<String> mainList;
 
-  const MainCoffeeClass({Key key, this.mainList}) : super(key: key);
+  const MainCoffeeClass({Key? key, required this.mainList}) : super(key: key);
 
   @override
-  _MainCoffeeClassState createState() => _MainCoffeeClassState(mainList);
+  _MainCoffeeClassState createState() => _MainCoffeeClassState();
 }
 
 class _MainCoffeeClassState extends State<MainCoffeeClass> {
-  final totalPiece = Get.put(PieceController());
-  List<double> _pointsPositions;
-  double _top;
-  PageController _myPageController = PageController();
-  int _leftTabs = 0;
-  int i;
-  final List<String> incomingTextList;
+  final quantityController = Get.put(PieceController());
 
-  _MainCoffeeClassState(this.incomingTextList);
+  late List<double> _pointsPositions;
+  double? _top;
+  PageController _myPageController = PageController();
+  late int _leftTabs = 0;
+  late int i;
+
+  List<String> get incomingTextList => widget.mainList;
 
   @override
   Widget build(BuildContext context) {
+    print('wtg   $incomingTextList');
     final mainTheme = Theme.of(context);
     return Row(
       children: [
@@ -106,7 +108,7 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                     AnimatedPositioned(
                       duration: Duration(seconds: 1),
                       curve: Curves.elasticInOut,
-                      top: _top - height / 16,
+                      top: _top! - height / 16,
                       child: Padding(
                         padding: EdgeInsets.only(left: context.width2 * 10),
                         child: Container(
@@ -134,20 +136,16 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                 SizedBox(height: context.height2 * 2),
                 Row(
                   children: [
-                    _leftTabs == 0
-                        ? Text("African Coffees",
-                            style: mainTheme.textTheme.headline4)
-                        : _leftTabs == 1
-                            ? Text("American Coffees",
-                                style: mainTheme.textTheme.headline4)
-                            : _leftTabs == 2
-                                ? Text("Blend",
-                                    style: mainTheme.textTheme.headline4)
-                                : _leftTabs == 3
-                                    ? Text("Options Page",
-                                        style: mainTheme.textTheme.headline4)
-                                    : null,
-                    Spacer(),
+                    Expanded(
+                      child: Text(
+                        getTabTitle(),
+                        style: mainTheme.textTheme.headline4,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                    ),
+                    // Spacer(),
                     Stack(
                       children: [
                         IconButton(
@@ -173,9 +171,9 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                         CircleAvatar(
                           radius: 10,
                           backgroundColor: Colors.red,
-                          child: GetX<PieceController>(
-                            builder: (_) => Text(
-                              "${totalPiece.totalPiece.toString()}",
+                          child: Obx(
+                            () => Text(
+                              quantityController.quantityString,
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -189,13 +187,13 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
                   child: PageView(
                     scrollDirection: Axis.vertical,
                     controller: _myPageController,
-                    physics: NeverScrollableScrollPhysics(),
                     children: _leftTabs == 3
 
                         ///i "just" can see "Options Page" text in Enable Widget Select Mode? :/
                         ? [
-                            Text("Options Page",
-                                style: mainTheme.textTheme.headline4)
+                            MainOptionsPage(),
+                            // Text("Options Page",
+                            //     style: mainTheme.textTheme.headline4)
                           ]
                         : coffeesType
                             .map((everyItems) => PageView(
@@ -221,16 +219,31 @@ class _MainCoffeeClassState extends State<MainCoffeeClass> {
       _top = _pointsPositions[p1] + 0;
     });
   }
+
+  static final _trk = TKeys.view.mainScreens.mainPage;
+
+  List<String> get titles => [
+        _trk.africanCoffees.tr,
+        _trk.americanCoffees.tr,
+        _trk.blend.tr,
+        _trk.optionsPage.tr,
+        // "African Coffees",
+        // "American Coffees",
+        // "Blend",
+        // "Options Page",
+      ];
+
+  String getTabTitle() => titles[_leftTabs];
 }
 
 class _MenuTextWidget extends StatelessWidget {
   const _MenuTextWidget({
-    Key key,
-    @required this.indexChecked,
-    @required this.chooseLeftTab,
-    this.i,
-    @required this.animationController,
-    @required this.textList,
+    Key? key,
+    required this.indexChecked,
+    required this.chooseLeftTab,
+    required this.i,
+    required this.animationController,
+    required this.textList,
   }) : super(key: key);
 
   final void Function(int p1) indexChecked;

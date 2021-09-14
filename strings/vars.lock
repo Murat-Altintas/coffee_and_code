@@ -1,0 +1,6 @@
+Components.ProductWidget.text2:
+  0: "fold<int>(0,"
+View.MainScreens.MainPage.text5:
+  0: toString()
+View.MainScreens.ProductInfo.TopSpecs.text1:
+  0: cartBasket

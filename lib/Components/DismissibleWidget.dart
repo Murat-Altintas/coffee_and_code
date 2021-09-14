@@ -6,10 +6,10 @@ class DismissibleWidget<T> extends StatelessWidget {
   final DismissDirectionCallback onDismissed;
 
   const DismissibleWidget({
-    @required this.item,
-    @required this.child,
-    @required this.onDismissed,
-    Key key,
+    required this.item,
+    required this.child,
+    required this.onDismissed,
+    Key? key,
   }) : super(key: key);
 
   @override

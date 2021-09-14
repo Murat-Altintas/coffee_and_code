@@ -1,0 +1,72 @@
+---
+coffess:
+  $ref: coffee.yaml
+
+AlertDialog:
+  ok: OK
+
+View:
+
+  MainScreens:
+
+    MainPage:
+      african_coffees: African Coffees
+      american_coffees: American Coffees
+      blend: Blend
+      options_page: Options Page
+      just: just
+
+    OptionsPage:
+      changeLanguage: "Change language:"
+
+    CartPage:
+      cart_page: CART PAGE
+      collapse: COLLAPSE
+      expandable: Expandable
+      expand: EXPAND
+
+    ProductInfo:
+      ProductInfoPage:
+        overview: Overview
+        aroma: Aroma
+        brewing: Brewing
+        height: Height
+        variety: Variety
+      TopSpecs:
+        price: Price
+        quantity: Quantity
+        grind: Grind
+        choose: Choose
+
+    SecondLeftBar:
+      africa: Africa
+      america: America
+      blend: Blend
+      options: Options
+      machıne: machıne
+      machines: Machines
+      third_party: 3rd Party
+      coffees: Coffees
+      third_gen: 3rd Gen
+
+  LoginScreens:
+    FirstLeftBar:
+      signIn: Sign In
+      signUp: Sign Up
+      restorePass: Restore Password
+
+    RestorePasswordPage:
+      write_email: "Write your e-mail;"
+      restorePass: Restore Password
+
+    SignInPage:
+      welcome_back: Welcome back;
+      email: "test@test.com"
+      complete: Complete
+      sign_in: Sign In
+      or_sign_up: or sign up with
+
+    SignUpPage:
+      welcome: Welcome;
+      sign_up: Sign Up
+      or_sign_up_with: or sign up with

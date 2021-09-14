@@ -1,0 +1,63 @@
+---
+grinding_types:
+  espresso: Espresso
+  filter: Filter
+  aeropress: Aeropress
+  turkish: Turkish
+
+variaties:
+  doairri: Doairri
+
+brewing:
+  espress_v60_filter: Espresso, V60, Filter
+
+aromas:
+  caramel_fruit_notes: "Caramel and Fruits Notes"
+
+single_origin:
+  kenya:
+    name: "Kenya"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+    aroma: "Chocolate, Brown Sugar and Dried Fruit Notes"
+
+  brasil:
+    name: "Brasil"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+    aroma: "Fruits, Sugar and Dried Fruit Notes"
+
+  costa_rica:
+    name: "Costa Rica"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+    aroma: "White Chocolate and Hazelnut Notes"
+
+single_serve:
+  kenya:
+    name: "Kenya"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+  brasil:
+    name: "Brasil"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+  costa_rica:
+    name: "Costa Rica"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+blend_coffess:
+  christmas:
+    name: "Christmas Blend"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+  christmas_decaf:
+    name: "Christmas Decaf"
+    description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+  espresso_roast:
+    name: "Espresso Roast"
+    description: |-
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled."
+
+  holiday:
+    name: "Holiday Blend"
+    description: |-
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
