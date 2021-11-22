@@ -47,7 +47,7 @@ class _FirstLeftBarState extends State<FirstLeftBar> {
                       height / 2.1,
                       height / 1.17
                     ];
-                    _top ??= _pointsPositions[0];
+                    _top = _pointsPositions[0];
                     return Stack(
                       children: [
                         Positioned(

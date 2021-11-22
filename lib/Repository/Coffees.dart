@@ -7,7 +7,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 class CoffeesClass {
   final List<String> weight, grinding;
   final List<int> piece;
-  final String id,
+  String id,
       name,
       imagePath,
       description,

@@ -7,8 +7,10 @@ class CartItemModel {
   int count;
   double price;
   String grind;
+  String uniqueId;
 
   CartItemModel({
+    required this.uniqueId,
     required this.coffee,
     required this.count,
     required this.price,
@@ -21,18 +23,40 @@ class CartItemModel {
 }
 
 class ShoppingController extends GetxController {
-  var products = <String, CartItemModel>{};
+  var products = <String, CartItemModel>{}.obs;
 
-  addProduct(CoffeesClass item, int piece, double price, String? grind) {
-    products[item.id] = CartItemModel(
+  addProduct(String incomingId, CoffeesClass item, int quantity, double price, String? grind) {
+    String uniqueId = item.id + item.brewing;
+    item.id = uniqueId;
+
+    products[uniqueId] = CartItemModel(
+      uniqueId: uniqueId,
       coffee: item,
-      count: piece,
+      count: quantity,
       price: price,
       grind: grind ?? '',
     );
+
+    update();
   }
 
-  int get totalCartItems => products.keys.length;
+  plusProduct(CartItemModel item) {
+    String uniqueId = item.uniqueId;
+
+    products[uniqueId]!.count++;
+    update();
+  }
+
+  minusProduct(CartItemModel item) {
+    String uniqueId = item.uniqueId;
+
+    products[uniqueId]!.count--;
+    update();
+  }
+
+  int get totalCartItems {
+    return products.keys.length;
+  }
 
   CartItemModel getItem(int idx) {
     return products.values.toList()[idx];
@@ -42,15 +66,23 @@ class ShoppingController extends GetxController {
 class PieceController extends GetxController {
   var totalPiece = 0.obs;
 
-  String get quantityString => totalPiece().toString();
+  String get quantityString {
+    return totalPiece().toString();
+  }
 
   void addQuantity(int piece) {
     totalPiece.value += piece;
   }
 
+  void minusQuantity(int piece) {
+    totalPiece.value -= piece;
+  }
+
   increaseProductPiece(products, coffee) {
     var _products = products.obs;
-    products[coffee.coffee.id].count = coffee.count + 1;
+    var uniqueId = coffee.coffee.id + coffee.coffee.brewing;
+
+    products[uniqueId].count = coffee.count + 1;
     return _products;
   }
 }

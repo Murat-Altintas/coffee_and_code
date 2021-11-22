@@ -27,14 +27,14 @@ class TopSpecs extends StatefulWidget {
 class _TopSpecsState extends State<TopSpecs> {
   String? dropDownString;
   late int quantity = 1;
-
   static final _trk = TKeys.view.mainScreens.productInfo.topSpecs;
 
-  // late AnimationController _controller;
+  AnimationController? controller;
 
   @override
   Widget build(BuildContext context) {
     final mainTheme = Theme.of(context);
+
     return Stack(
       children: <Widget>[
         CustomPaint(
@@ -201,12 +201,12 @@ class _TopSpecsState extends State<TopSpecs> {
               buttonShadowColor: mainTheme.primaryColorDark,
               child: Lottie.asset(
                 "assets/lottie/add_to_cart.json",
-                // controller: _controller,
-                onLoaded: (composition) {},
+                //controller: controller,
               ),
               onTap: () {
                 widget.totalPiece.addQuantity(quantity);
                 widget.shoppingController.addProduct(
+                  widget.coffeesClass.id + widget.coffeesClass.brewing,
                   widget.coffeesClass,
                   quantity,
                   widget.coffeesClass.price * quantity,

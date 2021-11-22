@@ -80,12 +80,11 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
   }
 
   void _tapDown(TapDownDetails details) {
-    print('down!');
     _controller.forward();
   }
 
   void _tapUp(TapUpDetails details) {
-    print('up!');
+
     _controller.reverse();
   }
 }

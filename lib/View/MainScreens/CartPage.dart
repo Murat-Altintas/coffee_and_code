@@ -13,7 +13,6 @@ import 'cart_item.dart';
 
 class CartPage extends StatefulWidget {
   final newProductPiece = Get.put(ShoppingController());
-  final totalPieceController = Get.put(PieceController());
   final CoffeesClass? coffeesClass;
 
   CartPage({Key? key, this.coffeesClass}) : super(key: key);

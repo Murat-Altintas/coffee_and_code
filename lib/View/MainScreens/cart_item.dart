@@ -2,7 +2,9 @@ import 'package:coffee_and_code/Components/Buttons.dart';
 import 'package:coffee_and_code/Components/ContextExtension.dart';
 import 'package:coffee_and_code/Controller/ShoppingController.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 
@@ -11,8 +13,10 @@ class CartCardItem extends StatelessWidget {
 
   // final VoidCallback onTap;
 
-   CartCardItem({Key? key, required this.model}) : super(key: key);
-  final shoppingController = Get.put(ShoppingController());
+  CartCardItem({Key? key, required this.model}) : super(key: key);
+  final ShoppingController shoppingController = Get.find();
+  final totalPiece = Get.put(PieceController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,157 +34,174 @@ class CartCardItem extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: context.height2 * 2),
               Expandable(
-                collapsed: Container(
-                  height: context.height2 * 22,
-                  width: context.width2 * 100,
-                  child: Column(
-                    children: [
-                      Row(
+                collapsed: Builder(builder: (context) {
+                  final controller = ExpandableController.of(context)!;
+                  return GestureDetector(
+                    onTap: () {
+                      controller.toggle();
+                    },
+                    child: Container(
+                      height: context.height2 * 22,
+                      width: context.width2 * 100,
+                      child: Column(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: model.coffee.bgColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            height: context.height2 * 18,
-                            width: context.width2 * 30,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Image.asset(
-                                model.coffee.imagePath,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: context.width2 * 5,
-                          ),
                           Row(
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: context.width2 * 25,
-                                    child: Text(
-                                      model.coffee.name,
-                                      style: mainTheme.textTheme.subtitle1,
-                                    ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: model.coffee.bgColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                height: context.height2 * 18,
+                                width: context.width2 * 30,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Image.asset(
+                                    model.coffee.imagePath,
                                   ),
-                                  Text(
-                                    model.grind,
-                                    style: mainTheme.textTheme.headline3,
-                                  ),
-                                  SizedBox(
-                                    height: context.lowestContainer,
-                                  ),
-                                  Text(
-                                    model.formatPrice,
-                                    style: mainTheme.textTheme.headline5,
-                                  ),
-                                ],
+                                ),
                               ),
                               SizedBox(
-                                width: context.lowestContainer,
+                                width: context.width2 * 5,
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                              Row(
                                 children: [
-                                  _ActionButton(label: '+', onTap: () {}),
-                                  SizedBox(
-                                    height: context.height2 * 1,
-                                  ),
-                                  model.count < 0
-                                      ? Text(
-                                          "0",
-                                          style: mainTheme.textTheme.headline4,
-                                        )
-                                      : Text(
-                                          model.count.toString(),
-                                          style: mainTheme.textTheme.headline4,
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: context.width2 * 25,
+                                        child: Text(
+                                          model.coffee.name,
+                                          style: mainTheme.textTheme.subtitle1,
                                         ),
-                                  SizedBox(
-                                    height: context.height2 * 1,
+                                      ),
+                                      Text(
+                                        model.grind,
+                                        style: mainTheme.textTheme.headline3,
+                                      ),
+                                      SizedBox(
+                                        height: context.lowestContainer,
+                                      ),
+                                      Text(
+                                        model.formatPrice,
+                                        style: mainTheme.textTheme.headline5,
+                                      ),
+                                    ],
                                   ),
-                                  _ActionButton(label: '-', onTap: () {
-                                    shoppingController.products[model.coffee.id]!.count;
-                                  }),
-/*
- shoppingController
-                                         .products[element.coffee.id]!
-                                           .count = element.count - 1;
-                                      if (widget.totalPieceController
-                                                .totalPiece.value !=
-                                          0) {
-                                          widget.totalPieceController
-                                            .addQuantity(-1);
- */
+                                  SizedBox(
+                                    width: context.lowestContainer,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      _ActionButton(
+                                          label: '+',
+                                          onTap: () {
+                                            totalPiece.addQuantity(int.parse("${model.uniqueId.replaceFirst(model.uniqueId, "1")}"));
+                                            shoppingController
+                                                .plusProduct(model);
+                                          }),
+                                      SizedBox(
+                                        height: context.height2 * 1,
+                                      ),
+                                      GetBuilder<ShoppingController>(
+                                          init: ShoppingController(),
+                                          builder: (controller) {
+                                            return shoppingController
+                                                        .products[
+                                                            model.uniqueId]!
+                                                        .count <
+                                                    0
+                                                ? Text("0")
+                                                : Text(
+                                                    "${controller.products[model.uniqueId]!.count}",
+                                                    style: mainTheme
+                                                        .textTheme.headline4,
+                                                  );
+                                          }),
+                                      SizedBox(
+                                        height: context.height2 * 1,
+                                      ),
+                                      _ActionButton(
+                                          label: '-',
+                                          onTap: () {
+                                            totalPiece.minusQuantity(int.parse("${model.uniqueId.replaceFirst(model.uniqueId, "1")}"));
+
+                                            shoppingController
+                                                .minusProduct(model);
+                                          }),
+                                    ],
+                                  )
                                 ],
                               )
                             ],
-                          )
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                expanded: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                    ),
+                  );
+                }),
+                expanded: Builder(builder: (context) {
+                  final controller = ExpandableController.of(context)!;
+                  return GestureDetector(
+                    onTap: () {
+                      controller.toggle();
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              model.coffee.name,
-                              style: mainTheme.textTheme.subtitle1,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  model.coffee.name,
+                                  style: mainTheme.textTheme.subtitle1,
+                                ),
+                                SizedBox(
+                                  height: context.height2 * 2,
+                                ),
+                                Text(
+                                  model.grind,
+                                  style: mainTheme.textTheme.headline3,
+                                ),
+                              ],
                             ),
-                            Text(
-                              model.grind,
-                              style: mainTheme.textTheme.headline3,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                model.count < 0
+                                    ? Text(
+                                        "0",
+                                        style: mainTheme.textTheme.headline4,
+                                      )
+                                    : Text(
+                                        model.count.toString(),
+                                        style: mainTheme.textTheme.headline4,
+                                      ),
+                                SizedBox(
+                                  height: context.height2 * 2,
+                                ),
+                                Text(
+                                  model.formatPrice,
+                                  style: mainTheme.textTheme.headline5,
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            model.count < 0
-                                ? Text(
-                                    "0",
-                                    style: mainTheme.textTheme.headline4,
-                                  )
-                                : Text(
-                                    model.count.toString(),
-                                    style: mainTheme.textTheme.headline4,
-                                  ),
-                            Text(
-                              model.price.toString() + "€",
-                              style: mainTheme.textTheme.headline5,
-                            ),
-                          ],
+                        SizedBox(
+                          height: context.height2 * 2,
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Row(
-                children: <Widget>[
-                  Builder(
-                    builder: (context) {
-                      final controller = ExpandableController.of(context)!;
-                      return TextButton(
-                        child: Text(
-                          controller.expanded ? "EXPAND" : "COLLAPSE",
-                          style: mainTheme.textTheme.subtitle1,
-                        ),
-                        onPressed: () {
-                          controller.toggle();
-                        },
-                      );
-                    },
-                  ),
-                ],
+                  );
+                }),
               ),
             ],
           ),
