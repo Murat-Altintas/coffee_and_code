@@ -26,7 +26,7 @@ class ShoppingController extends GetxController {
   var products = <String, CartItemModel>{}.obs;
 
   addProduct(String incomingId, CoffeesClass item, int quantity, double price, String? grind) {
-    String uniqueId = item.id + item.brewing;
+    String uniqueId = incomingId + grind!;
     item.id = uniqueId;
 
     products[uniqueId] = CartItemModel(
@@ -34,16 +34,18 @@ class ShoppingController extends GetxController {
       coffee: item,
       count: quantity,
       price: price,
-      grind: grind ?? '',
+      grind: grind,
     );
-
+print(uniqueId);
     update();
   }
 
-  plusProduct(CartItemModel item) {
+  plusProduct(CartItemModel item, price) {
     String uniqueId = item.uniqueId;
+     double plusPrice = 10;
 
     products[uniqueId]!.count++;
+    //products[plusPrice]!.price++;
     update();
   }
 

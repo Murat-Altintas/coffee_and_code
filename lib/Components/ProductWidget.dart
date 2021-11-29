@@ -45,7 +45,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ))),
             ),
             Positioned(
-              left: context.width2 * 20,
+              left: context.width2 * 25,
               child: Container(
                 height: context.height2 * 35,
                 // color: Colors.red,
@@ -53,7 +53,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               ),
             ),
             Positioned(
-              top: context.height2 * 33,
+              top: context.height2 * 29,
               //  child: Image.asset(widget.coffeesClass.imagePath),
               child: Padding(
                 padding: EdgeInsets.all(20),
