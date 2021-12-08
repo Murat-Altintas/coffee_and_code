@@ -206,7 +206,7 @@ class _TopSpecsState extends State<TopSpecs> {
               onTap: () {
                 widget.totalPiece.addQuantity(quantity);
                 widget.shoppingController.addProduct(
-                  widget.coffeesClass.id + widget.coffeesClass.brewing,
+                  widget.coffeesClass.brewing,
                   widget.coffeesClass,
                   quantity,
                   widget.coffeesClass.price * quantity,

@@ -34,15 +34,15 @@ class ShoppingController extends GetxController {
       coffee: item,
       count: quantity,
       price: price,
-      grind: grind,
+      grind: grind == grind.allMatches(grind) ? grind : grind.splitMapJoin(grind),
     );
-print(uniqueId);
+print(uniqueId + grind);
     update();
   }
 
   plusProduct(CartItemModel item, price) {
     String uniqueId = item.uniqueId;
-     double plusPrice = 10;
+     //double plusPrice = 10;
 
     products[uniqueId]!.count++;
     //products[plusPrice]!.price++;
